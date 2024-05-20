@@ -1,7 +1,10 @@
 
 const Test = () => {
     return (
-        <h1>This is test component</h1>
+       <div>
+       <h1>This is test asd component</h1>
+       <h2 className="text-red-500 font-bold">Home</h2>
+       </div>
     )
 }
 
