@@ -1,19 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DepositInfoController;
 
-
 Route::prefix('backend')->group(function(){
-    //login page 
-    Route::get('/login', [LoginController::class, 'getLogin'])
-        ->name('admin.login');
-        
-    Route::post('/login', [LoginController::class, 'handleLogin']);
+    // Login page 
+    Route::prefix('login')->group(function(){
+        Route::get('/', [LoginController::class, 'getLogin'])
+            ->name('admin.login');
+        Route::post('/', [LoginController::class, 'handleLogin']);
+    });
 
+    // Protected routes for authenticated users
     Route::middleware('auth.guard:web')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'getDashboardPage'])
             ->name('admin.dashboard');
@@ -26,6 +26,4 @@ Route::prefix('backend')->group(function(){
         
         Route::post('/create-deposit-info', [DepositInfoController::class, 'store']);
     });
-    
-        
 });
