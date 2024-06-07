@@ -1,9 +1,13 @@
-import React from 'react';
-import { useForm } from '@inertiajs/inertia-react';
+import React, {useEffect} from 'react';
+import { useForm, usePage } from '@inertiajs/inertia-react';
+import { toast } from 'react-toastify';
+
 import MenuBar from './Components/MenuBar';
 import '../../../css/app/front.css';
 
 const DepositForm = ({ inr_deposit_info, usdt_deposit_info }) => {
+    const { flash } = usePage().props;
+
     const { data, setData, post, processing, errors } = useForm({
         amount: '',
         currency: 'INR',
@@ -26,12 +30,38 @@ const DepositForm = ({ inr_deposit_info, usdt_deposit_info }) => {
         console.log(data);
         post(route('deposit'), data)
     };
+    useEffect(() => {
+        let toastId = null;
+
+        if (flash.success || flash.error) {
+            if (toastId) {
+                toast.dismiss(toastId);
+            }
+
+            if (flash.success) {
+                toastId = toast.success(flash.success, {pauseOnHover: false, autoClose:2000});
+                setData({
+                    email: '',
+                    password: ''
+                });
+            } else if (flash.error) {
+                toastId = toast.error(flash.error, {pauseOnHover: false, autoClose:2000});
+            }
+        }
+
+        return () => {
+            if (toastId) {
+                toast.dismiss(toastId);
+            }
+        };
+    }, [flash]);
 
     return (
         <section>
             <MenuBar />
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                <form onSubmit={handleSubmit} className="space-y-6">
+            <h2 className="text-xl font-extrabold text-gray-900 mb-4">Fund your Account</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                         <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
                             Deposit Amount

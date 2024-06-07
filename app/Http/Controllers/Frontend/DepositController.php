@@ -74,7 +74,8 @@ class DepositController extends Controller
             'currency' => $validatedData['currency'], 
             'deposit_info_id' => $validatedData['deposit_info']['id']
         ];
+
+        return back()->with('error', 'ok');
         
-        dd(gettype($data['amount'])); // Check the type of 'amount'
     }
 }
