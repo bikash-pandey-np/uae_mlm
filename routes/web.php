@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Frontend\AuthController;
+use App\Http\Controllers\Frontend\DepositController;
 
 Route::get('/', function () {
     return Inertia::render('Frontend/Homepage'); 
@@ -30,10 +31,17 @@ Route::prefix('login')->group(function(){
     Route::post('/', [AuthController::class, 'login']);
 });
 
+
+//protected routes 
 Route::middleware(['auth.guard:customer'])->group(function () {
     Route::get('/dashboard', function(){
         return Inertia::render('Frontend/Dashboard'); 
     })->name('dashboard');
+
+    Route::get('/deposit', [DepositController::class, 'getPage'])
+        ->name('deposit');
+    
+    Route::post('/deposit', [DepositController::class, 'processDeposit']);
 });
 
 include 'backend.php';

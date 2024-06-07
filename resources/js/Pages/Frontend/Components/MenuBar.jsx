@@ -87,8 +87,8 @@ const MenuBar = () => {
                     <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                         Login
                     </a>
-                    <a href="#" className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm register_btn">Register</a>
-                </div>
+                    <a href="#" className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm register_btn" style={{ backgroundColor: '#fe4948', letterSpacing: '1.5px', color: '#f1f1f1' }}>Register</a>
+                    </div>
 
                  
             </div>
@@ -161,6 +161,13 @@ const MenuBar = () => {
                 </div>
             </div>
         </div>
+        <div className="md:flex items-center mt-6 ml-8">
+    <a href="#" className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm mbl_login_btn">
+        Login
+    </a>
+    <a href="#" className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm register_btn">Register</a>
+</div>
+
     </div>
         </nav>
     );

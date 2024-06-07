@@ -5,12 +5,15 @@ body{
     font-family: "Barlow", sans-serif !important;
 
 }
-.register_btn{
+.register_btn,
+.mbl_login_btn{
     background: #fe4948 !important;
     letter-spacing: 1.5px;
     color: #f1f1f1;
 }
-
+.mbl_login_btn{
+    background: #E88D67 !important;
+}
 .banner_section{
     clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
 
@@ -26,7 +29,7 @@ body{
     left: 0;
     bottom: 0;
     width: 50%; 
-    background-color: #d123ba; /* Adjust the background color */
+    background-color: #373A40; /* Adjust the background color */
     z-index: 1000; /* Ensure it's above other elements */
     overflow-y: auto; /* Enable scrolling if content exceeds height */
 }
