@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/test', function(){
     return Inertia::render('Test');
-});
+})->name('test');
 
 // Register routes 
 Route::prefix('register')->group(function(){

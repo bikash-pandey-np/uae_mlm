@@ -33,7 +33,6 @@ body{
     z-index: 1000; /* Ensure it's above other elements */
     overflow-y: auto; /* Enable scrolling if content exceeds height */
 }
-
-.show{
-    display: block;
+.tradingview-widget-container{
+    height: 90vh !important;
 }
