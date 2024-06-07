@@ -60,7 +60,12 @@ const DepositForm = ({ inr_deposit_info, usdt_deposit_info }) => {
         <section>
             <MenuBar />
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <h2 className="text-xl font-extrabold text-gray-900 mb-4">Fund your Account</h2>
+            <div class="flex items-center">
+            <h2 class="text-xl font-extrabold text-gray-900 mb-4">Fund your Account</h2>
+            <p class="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-auto">Balance : <span class='font-bold'>100 AED</span></p>
+          </div>
+          
+
             <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                         <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
