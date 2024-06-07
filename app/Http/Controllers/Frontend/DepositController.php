@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Inertia;
 use App\Models\DepositInfo;
 use Validator;
+use Auth;
 
 class DepositController extends Controller
 {
@@ -23,6 +24,7 @@ class DepositController extends Controller
         return inertia('Frontend/DepositForm', [
             'inr_deposit_info' => $inr_deposit_info,
             'usdt_deposit_info' => $usdt_deposit_info,
+            'balance' => Auth::guard('customer')->user()->balance
         ]);
     }
 
