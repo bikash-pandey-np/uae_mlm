@@ -19,3 +19,18 @@ body{
     font-size: 8pt;
     text-align: justify;
 }
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%; 
+    background-color: #d123ba; /* Adjust the background color */
+    z-index: 1000; /* Ensure it's above other elements */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+}
+
+.show{
+    display: block;
+}

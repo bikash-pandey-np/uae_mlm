@@ -8,6 +8,10 @@ Route::get('/', function () {
     return Inertia::render('Frontend/Homepage'); 
 });
 
+Route::get('/test', function(){
+    return Inertia::render('Test');
+});
+
 // Register routes 
 Route::prefix('register')->group(function(){
     Route::get('/', function(){

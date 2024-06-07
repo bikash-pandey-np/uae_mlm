@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DepositInfoController;
+use App\Http\Controllers\Backend\CustomerController;
 
 Route::prefix('backend')->group(function(){
     // Login page 
@@ -25,5 +26,8 @@ Route::prefix('backend')->group(function(){
             ->name('admin.create.deposit-info');
         
         Route::post('/create-deposit-info', [DepositInfoController::class, 'store']);
+
+        Route::get('/customers', [CustomerController::class, 'getPage'])
+            ->name('admin.customers');
     });
 });
