@@ -154,9 +154,14 @@ const DepositRequest = ({ depositRequests, search }) => {
                                         <span className="block text-xs">{row.approved_amount} USDT</span>
                                     </div>
                                 ) : (
-                                    <button className="bg-green-500 text-white px-3 py-1 rounded-md text-xs">
-                                        Approve
-                                    </button>
+                                   <div>
+                                   <button className="bg-green-500 text-white px-3 py-1 rounded-md text-xs">
+                                   Approve
+                               </button>
+                               <button className="ml-3 bg-red-500 text-white px-3 py-1 rounded-md text-xs">
+                               Reject
+                           </button>
+                           </div>
                                 )}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-black-500">
