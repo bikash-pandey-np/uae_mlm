@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import MenuBar from './Components/MenuBar';
 import '../../../css/app/front.css';
 
-const DepositForm = ({ inr_deposit_info, usdt_deposit_info, balance }) => {
+const DepositForm = ({ inr_deposit_info, usdt_deposit_info, balance, pending_amount }) => {
     const { flash } = usePage().props;
     const { data, setData, post, processing, errors } = useForm({
         amount: '',
@@ -40,13 +40,21 @@ const DepositForm = ({ inr_deposit_info, usdt_deposit_info, balance }) => {
             }
 
             if (flash.success) {
-                toastId = toast.success(flash.success, {pauseOnHover: false, autoClose:2000});
+                toastId = toast.success(flash.success, {
+                    pauseOnHover: false, 
+                    autoClose:2000,
+                    onClose: () => window.location.reload()
+                });
                 setData({
                     email: '',
                     password: ''
                 });
             } else if (flash.error) {
-                toastId = toast.error(flash.error, {pauseOnHover: false, autoClose:2000});
+                toastId = toast.error(flash.error, {
+                    pauseOnHover: false, 
+                    autoClose:2000,
+                    onClose: () => window.location.reload()
+                });
             }
         }
 
@@ -63,7 +71,9 @@ const DepositForm = ({ inr_deposit_info, usdt_deposit_info, balance }) => {
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <div className="flex items-center">
             <h2 className="text-xl font-extrabold text-gray-900 mb-4">Fund your Account</h2>
-            <p className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-auto">Balance : <span className='font-bold'>{balance} AED</span></p>
+            <p className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-auto">Balance : <span className='font-bold'>{balance} USDT ~ {balance * 83.45} INR</span>
+                <span className='mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-4'>Pending Deposit : <span className='font-bold'>~{pending_amount}</span> INR</span>
+            </p>
           </div>
 
          {balance < 100 ? <div className="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 flex my-4" role="alert">

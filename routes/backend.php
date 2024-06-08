@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DepositInfoController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\DepositRequestController;
 
 Route::prefix('backend')->group(function(){
     // Login page 
@@ -29,5 +30,8 @@ Route::prefix('backend')->group(function(){
 
         Route::get('/customers', [CustomerController::class, 'getPage'])
             ->name('admin.customers');
+        
+        Route::get('/deposit-requests', [DepositRequestController::class, 'index'])
+            ->name('admin.deposit-requests');
     });
 });

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\DepositRequest;
 
 
 class DepositInfo extends Model
@@ -26,6 +27,11 @@ class DepositInfo extends Model
     protected $casts = [
         'is_active' => 'boolean'
     ];
+
+    public function deposits()
+    {
+        return $this->hasMany(DepositRequest::class);
+    }
 
    
 }

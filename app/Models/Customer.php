@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\DepositRequest;
 
 class Customer extends Authenticatable
 {
@@ -43,5 +44,10 @@ class Customer extends Authenticatable
         static::creating(function ($customer) {
             $customer->customer_code = 'CS' . str_pad(Customer::count() + 1, 6, '0', STR_PAD_LEFT);
         });
+    }
+
+    public function deposits()
+    {
+        return $this->hasMany(DepositRequest::class, 'deposited_by');
     }
 }
