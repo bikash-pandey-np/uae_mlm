@@ -42,6 +42,10 @@ Route::middleware(['auth.guard:customer'])->group(function () {
         ->name('deposit');
     
     Route::post('/deposit', [DepositController::class, 'processDeposit']);
+
+    //deposit history page 
+    Route::get('/deposit-history', [DepositController::class, 'getDepositHistoryPage'])
+        ->name('deposit-history');
 });
 
 include 'backend.php';

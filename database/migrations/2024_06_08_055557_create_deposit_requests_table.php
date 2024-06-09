@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('deposit_requests', function (Blueprint $table) {
             $table->id();
-            $table->float('amount');
+            $table->decimal('amount', 15, 2);
             $table->string('transaction_code', 10)->unique(); 
             $table->enum('currency', ['INR', 'USDT']);
             $table->unsignedBigInteger('deposit_info_id');
             $table->unsignedBigInteger('deposited_by');
             $table->boolean('is_approved')->default(false);
             $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending');
-            $table->float('approved_amount')->nullable();
+            $table->decimal('approved_amount', 15, 2)->nullable();
             $table->longText('remark')->nullable();
             $table->timestamps();
 

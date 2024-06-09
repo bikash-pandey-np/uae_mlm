@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Models\Customer;
 use App\Models\DepositInfo;
+use Carbon\Carbon;
 
 class DepositRequest extends Model
 {
@@ -51,4 +52,10 @@ class DepositRequest extends Model
             $model->transaction_code = $randomCode;
         });
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->diffForHumans();
+    }
+    
 }

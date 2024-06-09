@@ -52,6 +52,38 @@ class DepositController extends Controller
         ]);
     }
 
+    function getDepositHistoryPage(Request $request) {
+
+        $depositHistory = DepositRequest::with('depositInfo')
+                                    ->where('deposited_by', Auth::guard('customer')->user()->id)
+                                    ->orderBy('created_at', 'desc')
+                                    ->get();
+
+        $pendingAmountINR = DepositRequest::where(
+            "deposited_by",
+            Auth::guard("customer")->user()->id
+        )
+            ->where("currency", "INR")
+            ->where("status", "Pending")
+            ->sum("amount");
+
+        // Calculate pending amount for USDT deposits
+        $pendingAmountUSDT = DepositRequest::where(
+            "deposited_by",
+            Auth::guard("customer")->user()->id
+        )
+            ->where("currency", "USDT")
+            ->where("status", "Pending")
+            ->sum("amount");
+        // Calculate approximate total pending amount
+        $approxPendingAmount = $pendingAmountUSDT * 83.46 + $pendingAmountINR;
+        return Inertia::render('Frontend/DepositHistory', [
+            "balance" => Auth::guard("customer")->user()->balance,
+            "pending_amount" => $approxPendingAmount,
+            'deposit_histories' => $depositHistory
+        ]);
+    }
+
     public function processDeposit(Request $request)
     {
         $messages = [
@@ -115,6 +147,7 @@ class DepositController extends Controller
             );
         } catch (QueryException $e) {
             // Handle specific database errors
+            dd($e);
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1364) {
                 // Handle error when a required field is missing

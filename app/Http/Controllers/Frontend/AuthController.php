@@ -111,8 +111,14 @@ class AuthController extends Controller
 
         if (Auth::guard('customer')->attempt($credentials)) {
             // Authentication passed...
-            return redirect()->route('dashboard')->with('success', 'Success');
+            $intendedUrl = session()->get('url.intended');
+            if ($intendedUrl) {
+                return redirect()->intended($intendedUrl)->with('success', 'Success');
+            } else {
+                return redirect()->route('dashboard')->with('success', 'Success');
+            }
         }
+        
 
         return back()->with('error', 'Invalid Credentials !');
     }

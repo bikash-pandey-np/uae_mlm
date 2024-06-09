@@ -12,7 +12,7 @@ class DepositRequestController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $perPage = 1;
+        $perPage = 10;
     
         $query = DepositRequest::query()->with('depositedBy', 'depositInfo')->latest();
     
