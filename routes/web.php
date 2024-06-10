@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\DepositController;
+use App\Http\Controllers\Frontend\MarketController;
 
 Route::get('/', function () {
     return Inertia::render('Frontend/Homepage'); 
@@ -31,6 +32,12 @@ Route::prefix('login')->group(function(){
     Route::post('/', [AuthController::class, 'login']);
 });
 
+
+//crypto Page
+Route::get('/crypto', [MarketController::class, 'getCryptoPage'])
+    ->name('market.crypto');
+Route::get('/crypto-data', [MarketController::class, 'getCryptoData'])
+    ->name('market.crypto-data');
 
 //protected routes 
 Route::middleware(['auth.guard:customer'])->group(function () {

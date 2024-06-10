@@ -33,7 +33,7 @@ const MenuBar = () => {
                         </button>
                         {/* Dropdown Content */}
                         <div className="absolute left-0 hidden group-hover:block bg-gray-700 text-gray-300 rounded-md shadow-lg z-10">
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-700">Crypto</a>
+                        <a href={route('market.crypto')} className="block px-4 py-2 hover:bg-gray-700">Crypto</a>
                             <a href="#" className="block px-4 py-2 hover:bg-gray-700">Stocks</a>
                         </div>
                     </div>
@@ -84,10 +84,10 @@ const MenuBar = () => {
                 </div>
 
                 <div className="hidden md:flex items-center">
-                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <a href={route('login')} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                         Login
                     </a>
-                    <a href="#" className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm register_btn" style={{ backgroundColor: '#fe4948', letterSpacing: '1.5px', color: '#f1f1f1' }}>Register</a>
+                    <a href={route('register')} className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm register_btn" style={{ backgroundColor: '#fe4948', letterSpacing: '1.5px', color: '#f1f1f1' }}>Register</a>
                     </div>
 
                  
