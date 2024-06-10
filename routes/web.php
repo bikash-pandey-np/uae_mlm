@@ -53,6 +53,10 @@ Route::middleware(['auth.guard:customer'])->group(function () {
     //deposit history page 
     Route::get('/deposit-history', [DepositController::class, 'getDepositHistoryPage'])
         ->name('deposit-history');
+    
+    //trade 
+    Route::get('/trade', [MarketController::class, 'getTradePage'])
+        ->name('trade');
 });
 
 include 'backend.php';

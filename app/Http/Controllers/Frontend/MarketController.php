@@ -24,4 +24,8 @@ class MarketController extends Controller
        
         return Inertia::render('Frontend/Crypto');
     }
+
+    function getTradePage() {
+        return Inertia::render('Frontend/Trade');
+    }
 }
