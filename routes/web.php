@@ -62,6 +62,7 @@ Route::middleware(['auth.guard:customer'])->group(function () {
     //withdraw page 
     Route::get('/withdraw', [WithDrawController::class, 'getWithdrawPage'])
         ->name('withdraw');
+    Route::post('/withdraw', [WithDrawController::class, 'processWithdrawl']);
 });
 
 include 'backend.php';

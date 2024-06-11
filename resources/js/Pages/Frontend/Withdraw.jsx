@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useForm, usePage } from '@inertiajs/inertia-react';
+import { toast } from 'react-toastify';
 
 import MenuBar from './Components/MenuBar';
 import { FiMenu, FiChevronDown } from 'react-icons/fi'; // Import FiMenu for toggler icon
 import '../../../css/app/front.css';
 
 const Withdraw = () => {
+    const { flash } = usePage().props;
+
     const balance = 1200;
     const pending_amount = 12320;
     const { data, setData, post, processing, errors } = useForm({
@@ -13,11 +16,44 @@ const Withdraw = () => {
         currency: 'USDT',
         wallet_address: ''
     });
+    useEffect(() => {
+        let toastId = null;
 
+        if (flash.success || flash.error) {
+            if (toastId) {
+                toast.dismiss(toastId);
+            }
+
+            if (flash.success) {
+                toastId = toast.success(flash.success, {
+                    pauseOnHover: false, 
+                    autoClose:2000,
+                    // onClose: () => window.location.reload()
+                });
+                setData({
+                    email: '',
+                    password: ''
+                });
+            } else if (flash.error) {
+                toastId = toast.error(flash.error, {
+                    pauseOnHover: false, 
+                    autoClose:2000,
+                    // onClose: () => window.location.reload()
+                });
+            }
+        }
+
+        return () => {
+            if (toastId) {
+                toast.dismiss(toastId);
+            }
+        };
+    }, [flash]);
+   
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(data);
-        post(route('deposit'), data)
+        post(route('withdraw'), data)
     };
     return (
         <div>
@@ -43,8 +79,11 @@ const Withdraw = () => {
                         id="amount"
                         name="amount"
                         type="number"
-                        // onChange={handleChange}
-                        // value={data.amount}
+                        onChange={(e) => {
+                            e.preventDefault();
+                            setData('amount', e.target.value)
+                        }}
+                        value={data.amount}
                         className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                 </div>
@@ -61,7 +100,7 @@ const Withdraw = () => {
                     <select
                         id="currency"
                         name="currency"
-                        // value={data.currency}
+                        defaultValue={data.currency}
                         // onChange={handleChange}
                         className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
@@ -78,12 +117,15 @@ const Withdraw = () => {
                     id="wallet_address"
                     name="wallet_address"
                     type="text"
-                    // onChange={handleChange}
-                    // value={data.amount}
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setData('wallet_address', e.target.value)
+                    }}
+                    value={data.wallet_address}
                     className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
             </div>
-            {errors.amount && (
+            {errors.wallet_address && (
                 <p className="mt-2 text-sm text-red-600" id="amount-error">{errors.wallet_address}</p>
             )}
         </div>
