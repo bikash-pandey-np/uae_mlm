@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\DepositController;
 use App\Http\Controllers\Frontend\MarketController;
+use App\Http\Controllers\Frontend\WithDrawController;
 
 Route::get('/', function () {
     return Inertia::render('Frontend/Homepage'); 
@@ -57,6 +58,10 @@ Route::middleware(['auth.guard:customer'])->group(function () {
     //trade 
     Route::get('/trade', [MarketController::class, 'getTradePage'])
         ->name('trade');
+
+    //withdraw page 
+    Route::get('/withdraw', [WithDrawController::class, 'getWithdrawPage'])
+        ->name('withdraw');
 });
 
 include 'backend.php';
