@@ -28,7 +28,7 @@ const Withdraw = () => {
                 toastId = toast.success(flash.success, {
                     pauseOnHover: false, 
                     autoClose:2000,
-                    // onClose: () => window.location.reload()
+                    onClose: () => window.location.reload()
                 });
                 setData({
                     email: '',
@@ -38,7 +38,7 @@ const Withdraw = () => {
                 toastId = toast.error(flash.error, {
                     pauseOnHover: false, 
                     autoClose:2000,
-                    // onClose: () => window.location.reload()
+                    onClose: () => window.location.reload()
                 });
             }
         }
