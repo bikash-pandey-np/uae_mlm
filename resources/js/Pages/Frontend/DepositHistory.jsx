@@ -27,6 +27,8 @@ const DepositHistory = ({ balance, pending_amount, deposit_histories }) => {
     };
     console.log(deposit_histories);
     useEffect(() => {
+        document.title = "Deposit History | TheCapex.pro";
+
         let toastId = null;
 
         if (flash.success || flash.error) {

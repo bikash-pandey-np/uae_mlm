@@ -32,6 +32,8 @@ const Login = () => {
     };
 
     useEffect(() => {
+        document.title = "Login | TheCapex.pro";
+
         let toastId = null;
 
         if (flash.success || flash.error) {

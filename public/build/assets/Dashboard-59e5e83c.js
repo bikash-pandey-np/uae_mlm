@@ -1,1 +1,0 @@
-import{j as r}from"./app-74522766.js";import o from"./Layout-18d60ed8.js";/* empty css            */import"./MenuBar-cd6a38b4.js";const m=()=>r.jsx(o,{children:"This sis Dashboard page"});export{m as default};

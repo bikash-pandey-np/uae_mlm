@@ -43,6 +43,8 @@ const RegisterPage = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
     useEffect(() => {
+        document.title = "Register | TheCapex.pro";
+
         let toastId = null;
 
         if (flash.success || flash.error) {

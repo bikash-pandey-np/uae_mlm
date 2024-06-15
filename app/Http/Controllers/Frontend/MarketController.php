@@ -20,10 +20,29 @@ class MarketController extends Controller
         }
     }
 
+    function getShareData() {
+        $url = 'https://api-v2.capex.com/quotesv2?key=1&q=facebook,tesla,google,apple,nvidia,amzn,netflix';
+        $response = Http::get($url);
+    
+        if($response->successful()) {
+            return response()->json($response->json());
+        } else {
+            return response()->json(['error' => 'Failed to fetch data'], 500);
+        }
+    }
+
+
     function getCryptoPage() {
        
         return Inertia::render('Frontend/Crypto');
     }
+
+    function getSharePage() {
+       
+        return Inertia::render('Frontend/Shares');
+    }
+
+    
 
     function getTradePage() {
         return Inertia::render('Frontend/Trade');

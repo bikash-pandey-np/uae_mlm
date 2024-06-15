@@ -9,7 +9,7 @@ use App\Http\Controllers\Frontend\WithDrawController;
 
 Route::get('/', function () {
     return Inertia::render('Frontend/Homepage'); 
-});
+})->name('homepage');
 
 Route::get('/test', function(){
     return Inertia::render('Test');
@@ -39,6 +39,12 @@ Route::get('/crypto', [MarketController::class, 'getCryptoPage'])
     ->name('market.crypto');
 Route::get('/crypto-data', [MarketController::class, 'getCryptoData'])
     ->name('market.crypto-data');
+
+Route::get('/shares', [MarketController::class, 'getSharePage'])
+    ->name('market.shares');
+Route::get('/shares-data', [MarketController::class, 'getShareData'])
+    ->name('market.share-data');
+
 
 //protected routes 
 Route::middleware(['auth.guard:customer'])->group(function () {

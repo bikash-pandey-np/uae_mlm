@@ -32,6 +32,8 @@ const DepositForm = ({ inr_deposit_info, usdt_deposit_info, balance, pending_amo
         post(route('deposit'), data)
     };
     useEffect(() => {
+        document.title = "Deposit Account | TheCapex.pro";
+
         let toastId = null;
 
         if (flash.success || flash.error) {

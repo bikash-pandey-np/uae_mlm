@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Auth;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -40,10 +41,13 @@ class HandleInertiaRequests extends Middleware
             'success' => session('success') ?: null,
             'error' => session('error') ?: null,
         ];
-    
+        
         session()->forget(['success', 'error']);
     
-        return array_merge(parent::share($request), ['flash' => $flashData]);
+        return array_merge(parent::share($request), [
+            'flash' => $flashData,
+            'is_customer_auth' => Auth::guard('customer')->check()
+        ]);
     }
     
 }
