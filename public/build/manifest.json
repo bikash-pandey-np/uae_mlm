@@ -1,0 +1,261 @@
+{
+  "_iconBase-6df011ba.js": {
+    "file": "assets/iconBase-6df011ba.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_index-624eb413.js": {
+    "file": "assets/index-624eb413.js",
+    "imports": [
+      "_iconBase-6df011ba.js"
+    ]
+  },
+  "front.css": {
+    "file": "assets/front-a164f0e3.css",
+    "src": "front.css"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-17860813.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/Pages/Backend/Components/Layout.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Layout-2bc206c1.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Backend/Components/MenuBar.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/Components/Layout.jsx"
+  },
+  "resources/js/Pages/Backend/Components/MenuBar.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/MenuBar-4bb3d494.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/Components/MenuBar.jsx"
+  },
+  "resources/js/Pages/Backend/Components/Modal.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Modal-174d8e51.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/Components/Modal.jsx"
+  },
+  "resources/js/Pages/Backend/Components/PageHeader.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/PageHeader-0e7d821a.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/Components/PageHeader.jsx"
+  },
+  "resources/js/Pages/Backend/Components/ToggleSwitch.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/ToggleSwitch-147a7789.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/Components/ToggleSwitch.jsx"
+  },
+  "resources/js/Pages/Backend/Customers/Customer.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Customer-45b7ce40.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Backend/Components/Layout.jsx",
+      "resources/js/Pages/Backend/Components/PageHeader.jsx",
+      "resources/js/Pages/Backend/Components/Modal.jsx",
+      "_index-624eb413.js",
+      "resources/js/Pages/Backend/Components/MenuBar.jsx",
+      "_iconBase-6df011ba.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/Customers/Customer.jsx"
+  },
+  "resources/js/Pages/Backend/Dashboard.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Dashboard-86d0034c.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Backend/Components/Layout.jsx",
+      "resources/js/Pages/Backend/Components/MenuBar.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/Dashboard.jsx"
+  },
+  "resources/js/Pages/Backend/DepositInfo/CreateInfo.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/CreateInfo-9e34ad09.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Backend/Components/Layout.jsx",
+      "resources/js/Pages/Backend/Components/PageHeader.jsx",
+      "resources/js/Pages/Backend/Components/MenuBar.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/DepositInfo/CreateInfo.jsx"
+  },
+  "resources/js/Pages/Backend/DepositInfo/DepositInfo.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/DepositInfo-24aa4ae6.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Backend/Components/Layout.jsx",
+      "resources/js/Pages/Backend/Components/PageHeader.jsx",
+      "resources/js/Pages/Backend/Components/ToggleSwitch.jsx",
+      "_index-624eb413.js",
+      "resources/js/Pages/Backend/Components/Modal.jsx",
+      "resources/js/Pages/Backend/Components/MenuBar.jsx",
+      "_iconBase-6df011ba.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/DepositInfo/DepositInfo.jsx"
+  },
+  "resources/js/Pages/Backend/Login.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Login-8c914555.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Backend/Login.jsx"
+  },
+  "resources/js/Pages/Frontend/Components/MenuBar.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/MenuBar-485e0caa.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_iconBase-6df011ba.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Components/MenuBar.jsx"
+  },
+  "resources/js/Pages/Frontend/Dashboard.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Dashboard-01794086.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Dashboard.jsx"
+  },
+  "resources/js/Pages/Frontend/Homepage.jsx": {
+    "css": [
+      "assets/front-a164f0e3.css",
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Homepage-bb3324e7.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Frontend/Components/MenuBar.jsx",
+      "_iconBase-6df011ba.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Homepage.jsx"
+  },
+  "resources/js/Pages/Frontend/Login.jsx": {
+    "css": [
+      "assets/front-a164f0e3.css",
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Login-2293b026.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Frontend/Components/MenuBar.jsx",
+      "_index-624eb413.js",
+      "_iconBase-6df011ba.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Login.jsx"
+  },
+  "resources/js/Pages/Frontend/Register.jsx": {
+    "css": [
+      "assets/front-a164f0e3.css",
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Register-f232c1b3.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Frontend/Components/MenuBar.jsx",
+      "_index-624eb413.js",
+      "_iconBase-6df011ba.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Register.jsx"
+  },
+  "resources/js/Pages/Test.jsx": {
+    "css": [
+      "assets/app-17860813.css"
+    ],
+    "file": "assets/Test-78650f11.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Test.jsx"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-d9e3f7bd.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.jsx": {
+    "css": [
+      "assets/app-d9e3f7bd.css",
+      "assets/app-17860813.css"
+    ],
+    "dynamicImports": [
+      "resources/js/Pages/Backend/Components/Layout.jsx",
+      "resources/js/Pages/Backend/Components/MenuBar.jsx",
+      "resources/js/Pages/Backend/Components/Modal.jsx",
+      "resources/js/Pages/Backend/Components/PageHeader.jsx",
+      "resources/js/Pages/Backend/Components/ToggleSwitch.jsx",
+      "resources/js/Pages/Backend/Customers/Customer.jsx",
+      "resources/js/Pages/Backend/Dashboard.jsx",
+      "resources/js/Pages/Backend/DepositInfo/CreateInfo.jsx",
+      "resources/js/Pages/Backend/DepositInfo/DepositInfo.jsx",
+      "resources/js/Pages/Backend/Login.jsx",
+      "resources/js/Pages/Frontend/Components/MenuBar.jsx",
+      "resources/js/Pages/Frontend/Dashboard.jsx",
+      "resources/js/Pages/Frontend/Homepage.jsx",
+      "resources/js/Pages/Frontend/Login.jsx",
+      "resources/js/Pages/Frontend/Register.jsx",
+      "resources/js/Pages/Test.jsx"
+    ],
+    "file": "assets/app-761f72af.js",
+    "isEntry": true,
+    "src": "resources/js/app.jsx"
+  }
+}
