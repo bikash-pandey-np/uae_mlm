@@ -7,8 +7,8 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 import Modal from "../Components/Modal";
 
-const DepositRequest = ({ depositRequests, search }) => {
-    console.log(depositRequests);
+const Withdraw = ({ withdrawRequests, search }) => {
+    console.log(withdrawRequests);
 
     const [openModalId, setOpenModalId] = useState(null);
     const [currentRow, setCurrentRow] = useState(null);
@@ -33,39 +33,7 @@ const DepositRequest = ({ depositRequests, search }) => {
         setCurrentRow(null);
     };
 
-    const renderDepositDetails = (row) => {
-        if (row.deposit_info.currency === "INR") {
-            return (
-                <div>
-                    <div className="sm:flex sm:items-center sm:justify-between p-2">
-                        <dt className="text-sm font-medium text-gray-500 sm:w-1/3">Bank Name</dt>
-                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 font-bold">{row.deposit_info.flat_bank_name}</dd>
-                    </div>
-                    <div className="sm:flex sm:items-center sm:justify-between p-2">
-                        <dt className="text-sm font-medium text-gray-500 sm:w-1/3">Account No.</dt>
-                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 font-bold">{row.deposit_info.flat_account_no}</dd>
-                    </div>
-                    <div className="sm:flex sm:items-center sm:justify-between p-2">
-                        <dt className="text-sm font-medium text-gray-500 sm:w-1/3">Account Name</dt>
-                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 font-bold">{row.deposit_info.flat_account_name}</dd>
-                    </div>
-                </div>
-            );
-        } else if (row.deposit_info.currency === "USDT") {
-            return (
-                <div>
-                    <div className="sm:flex sm:items-center sm:justify-between p-2">
-                        <dt className="text-sm font-medium text-gray-500 sm:w-1/3">Network Type</dt>
-                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 font-bold">{row.deposit_info.network_type}</dd>
-                    </div>
-                    <div className="sm:flex sm:items-center sm:justify-between p-2">
-                        <dt className="text-sm font-medium text-gray-500 sm:w-1/3">Wallet Address</dt>
-                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 font-bold">{row.deposit_info.wallet_address}</dd>
-                    </div>
-                </div>
-            );
-        }
-    };
+  
 
     const handleSearchInputChange = (event) => {
         const { value } = event.target;
@@ -74,13 +42,13 @@ const DepositRequest = ({ depositRequests, search }) => {
     
     const handleSearch = (event) => {
         if (event.key === 'Enter') {
-            Inertia.get(route('admin.deposit-requests'), { search: searchQuery });
+            Inertia.get(route('admin.withdraw-requests'), { search: searchQuery });
         }
     };
 
     const cancelSearch = (e) => {
         setSearchQuery('');
-        Inertia.get(route('admin.deposit-requests'), { search: searchQuery });
+        Inertia.get(route('admin.withdraw-requests'), { search: searchQuery });
 
     }
     
@@ -88,7 +56,7 @@ const DepositRequest = ({ depositRequests, search }) => {
     return (
         <Layout>
             <PageHeader 
-                title="Manage Deposit Requests" 
+                title="Manage Withdraw Requests" 
                 // buttonLabel="Add New" 
                 // buttonLink={route('admin.create.deposit-info') }
                 breadcrumbItems={breadcrumbItems} 
@@ -134,10 +102,10 @@ const DepositRequest = ({ depositRequests, search }) => {
                 </thead>
                 
                 <tbody className="bg-white divide-y divide-gray-200">
-                    {depositRequests.data.map((row, index) => (
+                    {withdrawRequests.data.map((row, index) => (
                         <tr key={index}>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-black-500">
-                                {row.deposited_by.customer_code}
+                                {row.customer.customer_code}
                                 <span className={`inline-block px-2 py-1 rounded-full text-xs font-semibold text-white ml-4 ${row.status === 'Pending' ? 'bg-blue-500' : row.status === 'Approved' ? 'bg-green-500' : 'bg-red-500'}`}>
                                     {row.status}
                                 </span>
@@ -175,7 +143,7 @@ const DepositRequest = ({ depositRequests, search }) => {
                                     />
                                     {openModalId === row.id && (
                                         <Modal isOpen={openModalId === row.id} onClose={handleCloseModal}>
-                                            <h1 className="font-bold mb-3">Deposit Request Details</h1>
+                                            <h1 className="font-bold mb-3">Withdraw Request Details</h1>
                                             <dl className="grid grid-cols-2 gap-x-4">
                                                 <div className="py-2">
                                                     <dt className="font-bold">Amount:</dt>
@@ -188,19 +156,19 @@ const DepositRequest = ({ depositRequests, search }) => {
                                             </dl>
                                             <dl className="grid grid-cols-1 gap-x-4">
                                                 <div className="py-2">
-                                                    <dt className="font-bold">Deposited By:</dt>
-                                                    <dd>{row.deposited_by.customer_code} ({row.deposited_by.email})</dd>
+                                                    <dt className="font-bold">Requested By:</dt>
+                                                    <dd>{row.customer.customer_code} ({row.customer.email})</dd>
                                                 </div>
                                                 <div className="py-2">
-                                                    <h3 className="font-bold font-md">Deposited At</h3>
-                                                    {renderDepositDetails(row)}
+                                                    <h3 className="font-bold font-md">Wallet Address</h3>
+                                                    {row.wallet_address}
                                                 </div>
                                                 <div className="py-2">
                                                     <dt className="font-bold">Status:</dt>
                                                     <dd>{row.status}</dd>
                                                 </div>
                                                 <div className="py-2">
-                                                    <dt className="font-bold">Deposit Request At:</dt>
+                                                    <dt className="font-bold">Withdraw Request At:</dt>
                                                     <dd>{row.created_at}</dd>
                                                 </div>
                                                 {row.is_approved && (
@@ -228,7 +196,7 @@ const DepositRequest = ({ depositRequests, search }) => {
              {/* Pagination */}
              <div className="flex justify-center mt-4">
              <ul className="flex">
-                 {depositRequests.links.map((link, index) => (
+                 {withdrawRequests.links.map((link, index) => (
                      <li key={index}>
                      <a
                      href={link.url}
@@ -245,4 +213,4 @@ const DepositRequest = ({ depositRequests, search }) => {
     );
 }
 
-export default DepositRequest;
+export default Withdraw;

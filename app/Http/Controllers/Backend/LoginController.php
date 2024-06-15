@@ -22,10 +22,17 @@ class LoginController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::guard('web')->attempt($request->only('email', 'password'))) {
             return redirect()->route('admin.dashboard')->with('success', 'Login Successful');
         }
 
        return back()->with('error', 'Invalid Credentials');
+    }
+
+    public function handleLogout()
+    {
+        Auth::guard('web')->logout(); // Ensure to specify 'web' guard for web authentication
+
+        return redirect()->route('admin.login')->with('success', 'Logged out successfully');
     }
 }

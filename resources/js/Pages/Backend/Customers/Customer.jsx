@@ -57,7 +57,7 @@ const Customer = ({ customers }) => {
                     {customers.map((customer, index) => (
                         <tr key={index}>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-black-500">
-                                {customer.full_name} - <b>{customer.balance} AED</b>
+                                {customer.full_name} - <b>{customer.balance} USDT</b>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-black-500">
                                 {customer.email}
@@ -87,7 +87,7 @@ const Customer = ({ customers }) => {
             {currentCustomer && (
                 <Modal isOpen={openModalId === currentCustomer.id} onClose={handleCloseModal}>
                     <h1 className="font-bold mb-3">{currentCustomer.full_name} Details</h1>
-                    <p>Balance: <span className='font-bold'>{currentCustomer.balance} AED</span></p>
+                    <p>Balance: <span className='font-bold'>{currentCustomer.balance} USDT</span></p>
                     <p>Full Name: <span className='font-bold'>{currentCustomer.full_name}</span></p>
                     <p>Email: <span className='font-bold'>{currentCustomer.email}</span></p>
                     <p>Customer Code: <span className='font-bold'>{currentCustomer.customer_code}</span></p>

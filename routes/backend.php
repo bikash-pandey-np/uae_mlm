@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DepositInfoController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\DepositRequestController;
+use App\Http\Controllers\Backend\WithdrawController;
 
 Route::prefix('backend')->group(function(){
     // Login page 
@@ -19,7 +20,8 @@ Route::prefix('backend')->group(function(){
     Route::middleware('auth.guard:web')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'getDashboardPage'])
             ->name('admin.dashboard');
-        
+        Route::post('/logout', [LoginController::class, 'handleLogout'])
+            ->name('admin.logout');
         Route::get('/deposit-info', [DepositInfoController::class, 'getPage'])
             ->name('admin.deposit-info');
         
@@ -33,5 +35,8 @@ Route::prefix('backend')->group(function(){
         
         Route::get('/deposit-requests', [DepositRequestController::class, 'index'])
             ->name('admin.deposit-requests');
+        
+        Route::get('/withdraw-requests', [WithdrawController::class, 'index'])
+            ->name('admin.withdraw-requests');
     });
 });

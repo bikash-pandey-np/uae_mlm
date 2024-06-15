@@ -16,6 +16,12 @@ class AuthenticateGuardMiddleware
      */
     public function handle(Request $request, Closure $next, $guard)
     {
+        if(!$request->session()->has('intended'))
+        {
+            $request->session()->put('intended', url()->current());
+
+        }
+
         switch ($guard) {
             case 'web':
                 if (!Auth::guard($guard)->check()) {

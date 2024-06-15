@@ -108,15 +108,12 @@ class AuthController extends Controller
 
 
         $credentials = $request->only('email', 'password');
-
         if (Auth::guard('customer')->attempt($credentials)) {
-            // Authentication passed...
-            $intendedUrl = session()->get('url.intended');
-            if ($intendedUrl) {
-                return redirect()->intended($intendedUrl)->with('success', 'Success');
-            } else {
-                return redirect()->route('dashboard')->with('success', 'Success');
-            }
+            // Check if there's an intended URL in the session
+            $intendedUrl = session()->get('intended', route('dashboard'));
+    
+            // Redirect to the intended URL or the default dashboard route
+            return redirect($intendedUrl)->with('success', 'Success');
         }
         
 

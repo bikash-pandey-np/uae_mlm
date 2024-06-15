@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Customer;
 use Str;
+use Carbon\Carbon;
 
 class WithdrawRequest extends Model
 {
@@ -32,6 +33,11 @@ class WithdrawRequest extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class, 'requested_by');
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->diffForHumans();
     }
 
     protected static function boot()
