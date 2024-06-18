@@ -19,7 +19,7 @@ const MenuBar = () => {
     };
 
     return (
-        <nav className="bg-gray-800 py-4 px-8">
+        <nav className="bg-gray-700 bg-opacity-90 py-4 px-8">
             <div className="container mx-auto flex items-center justify-between">
                 <div className="flex items-center">
                     <a href={route('homepage')} className="flex items-center text-white text-lg font-semibold">

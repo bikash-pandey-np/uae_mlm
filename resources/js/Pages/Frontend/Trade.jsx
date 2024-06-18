@@ -3,7 +3,7 @@ import MenuBar from './Components/MenuBar';
 import { FiMenu, FiChevronDown } from 'react-icons/fi'; // Import FiMenu for toggler icon
 import '../../../css/app/front.css';
 
-const Trade = () => {
+const Trade = ({slug, type}) => {
     const container = useRef();
 
     useEffect(() => {
@@ -11,20 +11,19 @@ const Trade = () => {
       script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
       script.type = "text/javascript";
       script.async = true;
-      script.innerHTML = `
-          {
-            "autosize": true,
-            "symbol": "BINANCE:BTCUSDT",
-            "interval": "1",
-            "timezone": "Etc/UTC",
-            "theme": "light",
-            "style": "1",
-            "locale": "en",
-            "allow_symbol_change": false,
-            "save_image": false,
-            "calendar": false,
-            "support_host": "https://www.tradingview.com"
-          }`;
+      script.innerHTML = JSON.stringify({
+        "autosize": true,
+        "symbol": type === 'crypto' ? `BINANCE:${slug}` : `NASDAQ:${slug}`,
+        "interval": "1",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "allow_symbol_change": false,
+        "save_image": false,
+        "calendar": false,
+        "support_host": "https://www.tradingview.com"
+      });
       container.current.appendChild(script);
     }, []);
     return (

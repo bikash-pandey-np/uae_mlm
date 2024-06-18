@@ -45,6 +45,10 @@ Route::get('/shares', [MarketController::class, 'getSharePage'])
 Route::get('/shares-data', [MarketController::class, 'getShareData'])
     ->name('market.share-data');
 
+//price api for trade
+Route::get('/current-price/{slug}', [MarketController::class, 'getPriceForTrade'])
+    ->name('current-price');
+
 
 //protected routes 
 Route::middleware(['auth.guard:customer'])->group(function () {
@@ -62,7 +66,7 @@ Route::middleware(['auth.guard:customer'])->group(function () {
         ->name('deposit-history');
     
     //trade 
-    Route::get('/trade', [MarketController::class, 'getTradePage'])
+    Route::get('/trade/{type}/{slug}', [MarketController::class, 'getTradePage'])
         ->name('trade');
 
     //withdraw page 

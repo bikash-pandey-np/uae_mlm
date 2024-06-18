@@ -20,6 +20,18 @@ class MarketController extends Controller
         }
     }
 
+    function getPriceForTrade($slug) {
+        $url = 'https://api-v2.capex.com/quotesv2?key=1&q=aaveusd,linkusd,btcfutures,ethereum,adausd,facebook,tesla,google,apple,nvidia,amzn,netflix';
+        $response = Http::get($url);
+    
+        if($response->successful()) {
+            return response()->json($response->json()[$slug]['price'], 200);
+        } else {
+            return response()->json(['error' => 'Failed to fetch data'], 500);
+        }
+
+    }
+
     function getShareData() {
         $url = 'https://api-v2.capex.com/quotesv2?key=1&q=facebook,tesla,google,apple,nvidia,amzn,netflix';
         $response = Http::get($url);
@@ -42,9 +54,32 @@ class MarketController extends Controller
         return Inertia::render('Frontend/Shares');
     }
 
-    
+    function getTradePage($type, $slug) {
+        $cryptoCheck = ['AAVEUSDT', 'LINKUSDT', 'BTCUSDT', 'ETHUSDT', 'ADAUSDT'];
+        $typeCheck = ['crypto', 'shares'];
+        $shareCheck = ['AAPL', 'META', 'NVDA', 'TSLA', 'AMZN', 'NFLX', 'GOOG'];
 
-    function getTradePage() {
-        return Inertia::render('Frontend/Trade');
+        if(! in_array($type, $typeCheck))
+        {
+            return Inertia::render('Frontend/NotSupported');
+        }
+
+        if($type === 'crypto' && in_array($slug, $cryptoCheck))
+        {
+            return Inertia::render('Frontend/Trade', [
+                'slug' => $slug,
+                'type' => $type
+            ]);
+        }
+        elseif($type === 'shares' && in_array($slug, $shareCheck))
+        {
+            return Inertia::render('Frontend/Trade', [
+                'slug' => $slug,
+                'type' => $type
+            ]);
+        }
+        else{
+            return Inertia::render('Frontend/NotSupported');
+        }
     }
 }

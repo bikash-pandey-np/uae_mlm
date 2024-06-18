@@ -54,6 +54,31 @@ const Crypto = ( ) => {
             style={{ width: "25px", height: "25px" }} />);
     }
 
+    const getSlug = (crypto) => {
+        var output = null;
+        if(crypto.id === "aaveusd"){
+            output = "AAVEUSDT"
+        }
+
+        if(crypto.id === "linkusd"){
+            output = "LINKUSDT"
+        }
+
+        if(crypto.id === "bitcoin"){
+            output = "BTCUSDT"
+        }
+
+        if(crypto.id === "ethereum"){
+            output = "ETHUSDT"
+        }
+        if(crypto.id === "adausd"){
+
+            output = "ADAUSDT"
+        }
+
+        return output;
+    }
+
     
     return (
         <div>
@@ -89,9 +114,10 @@ const Crypto = ( ) => {
                                         {crypto.change}
                                     </td>
                                     <td className="px-4 py-2">
-                                        <button className="bg-white text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white py-1 px-4 rounded text-sm">
-                                            Trade
-                                        </button>
+                                    <a href={route('trade', ['crypto', getSlug(crypto)])} className="bg-white text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white py-1 px-4 rounded text-sm">
+                                    Trade
+                                    </a>
+                                  
                                     </td>
                                 </tr>
                             );

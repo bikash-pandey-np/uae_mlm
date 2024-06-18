@@ -60,6 +60,36 @@ const Shares = ( ) => {
             style={{ width: "25px", height: "25px" }} />);
     }
 
+    const getSlug = (crypto) => {
+        var output = null;
+        if(crypto.id === "amzn"){
+            output = "AMZN"
+        }
+
+        if(crypto.id === "google"){
+            output = "GOOG"
+        }
+
+        if(crypto.id === "facebook"){
+            output = "META"
+        }
+        if(crypto.id === "apple"){
+            output = "APPL"
+        }
+
+        if(crypto.id === "nvidia"){
+            output = "NVDA"
+        }
+        if(crypto.id === "tesla"){
+            output = "TSLA"
+        }
+        if(crypto.id === "netflix"){
+            output = "NFLX"
+        }
+
+        return output;
+    }
+
     
     return (
         <div>
@@ -95,9 +125,9 @@ const Shares = ( ) => {
                                         {crypto.change}
                                     </td>
                                     <td className="px-4 py-2">
-                                        <button className="bg-white text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white py-1 px-4 rounded text-sm">
-                                            Trade
-                                        </button>
+                                    <a href={route('trade', ['shares', getSlug(crypto)])} className="bg-white text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white py-1 px-4 rounded text-sm">
+                                        Trade
+                                    </a>
                                     </td>
                                 </tr>
                             );
