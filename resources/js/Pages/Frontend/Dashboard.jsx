@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import MenuBar from './Components/MenuBar';
 import SwitchComponent from './Components/SwitchComponent';
+import BottomNavbar from './Components/BottomNavbar';
 import banner from '../../../images/homepage-banner.jpeg';
 import '../../../css/app/front.css';
 
-const Dashboard = ({ total_deposit_amount, pending_deposit, total_withdraw, total_pending_withdraw, balance, username }) => {
+const Dashboard = ({ active, total_deposit_amount, pending_deposit, total_withdraw, total_pending_withdraw, balance, username }) => {
     const [fetchMarketData, setFetchMarketData] = useState({});
     const [fetchMarketDataS, setFetchMarketDataS] = useState({});
 
@@ -53,7 +54,7 @@ const Dashboard = ({ total_deposit_amount, pending_deposit, total_withdraw, tota
 
     return (
         <div>
-            <MenuBar />
+            <MenuBar balance={balance} />
             <section className='mt-4'>
                 <h2 className='text-xl mx-4 my-4'>Welcome, {username}</h2>
                 <div className="mx-4 grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -62,6 +63,8 @@ const Dashboard = ({ total_deposit_amount, pending_deposit, total_withdraw, tota
                         <div>
                             <p className="text-gray-500 font-semibold">Balance</p>
                             <p className="text-black-600 text-xl font-bold">{balance} USDT</p>
+                            <p className="text-black-600 text-xl font-bold">~ ₹ {(balance * 83.23).toFixed(2)} </p>
+
                         </div>
                         <a href={route('deposit')} className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none">
                             Deposit
@@ -74,6 +77,7 @@ const Dashboard = ({ total_deposit_amount, pending_deposit, total_withdraw, tota
                     fetchShareData={fetchMarketDataS} />
                 </div>
             </section>
+            <BottomNavbar active={active} />
         </div>
     );
 }

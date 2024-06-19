@@ -147,7 +147,6 @@ class DepositController extends Controller
             );
         } catch (QueryException $e) {
             // Handle specific database errors
-            dd($e);
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1364) {
                 // Handle error when a required field is missing

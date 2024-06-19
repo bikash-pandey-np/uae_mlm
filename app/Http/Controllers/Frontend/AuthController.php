@@ -119,4 +119,10 @@ class AuthController extends Controller
 
         return back()->with('error', 'Invalid Credentials !');
     }
+
+    function logout() {
+        Auth::guard('customer')->logout();
+
+        return redirect()->route('login')->with('success', 'Logout Successful');
+    }
 }

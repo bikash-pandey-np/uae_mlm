@@ -120,24 +120,46 @@ const SwitchComponent = ({fetchMarketData, fetchShareData}) => {
 
     return (
         <div className='m-4'>
-        <a
-        className={`inline-block px-4 py-2 rounded-md text-white-100 ${selectedOption === 'Crypto' ? 'bg-orange-500' : 'bg-orange-300 hover:bg-orange-400'}`}
-        onClick={() => handleOptionClick('Crypto')}
-    >
-        Crypto
-    </a>
-    <a
-    className={`ml-4 inline-block px-4 py-2 rounded-md text-white-100 ${selectedOption === 'Shares' ? 'bg-orange-500' : 'bg-orange-300 hover:bg-orange-400'}`}
-    onClick={() => handleOptionClick('Shares')}
->
-    Shares
-</a>
+            <div className='crypto-details mt-5'>
+                {/* Display Crypto details */}
+                <h2 className='mt-4 mb-4 font-bold'>CryptoCurrency Market</h2>
+                <hr />
+                <table className="table-auto w-4/5 border-collapse mx-auto">
+                    <thead className="border-b">
+                        <tr>
+                            <th className="px-4 py-2">Display</th>
+                            <th className="px-4 py-2">Price</th>
+                            <th className="hidden md:table-cell px-4 py-2">24H Change</th>
+                            <th className="hidden md:table-cell px-4 py-2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Object.values(fetchMarketData).map((crypto) => (
+                            <tr key={crypto.id} className='hover:cursor-pointer hover:bg-red-200'>
+                                <td className="px-4 py-2 flex items-center">
+                                    {iconForCrypto(crypto)}
+                                    <span className='ml-2'>{crypto.display}</span>
+                                </td>
+                                <td className="px-4 py-2">{crypto.price}</td>
+                                <td className={`hidden md:table-cell px-4 py-2 ${parseFloat(crypto.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>
+                                    {crypto.change}
+                                </td>
+                                <td className="px-4 py-2">
+                                    <a href={route('trade', ['crypto', getSlug(crypto)])} className="bg-white text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white py-1 px-4 rounded text-sm">
+                                        Trade
+                                    </a>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
-
-            {selectedOption === 'Crypto' && (
-                <div className='crypto-details mt-5'>
-                    {/* Display Crypto details */}
-                    <table className="table-auto w-4/5 border-collapse mx-auto">
+            <div className='shares-details mt-5'>
+                {/* Display Shares details */}
+                <h2 className='mt-8 mb-4 font-bold'>Stock Market</h2>
+                <hr />
+                <table className="table-auto w-4/5 border-collapse mx-auto">
                     <thead className="border-b">
                         <tr>
                             <th className="px-4 py-2">Display</th>
@@ -148,73 +170,27 @@ const SwitchComponent = ({fetchMarketData, fetchShareData}) => {
                         </tr>
                     </thead>
                     <tbody>
-                    {Object.values(fetchMarketData).map((crypto) => {
-                        console.log(crypto);
-                        return (
-                            <tr id={crypto.id} className='hover:cursor-pointer hover:bg-red-200'>
+                        {Object.values(fetchShareData).map((share) => (
+                            <tr key={share.id} className='hover:cursor-pointer hover:bg-red-200'>
                                 <td className="px-4 py-2 flex items-center">
-                                 { iconForCrypto(crypto)}
-                                    <span className='ml-2'>{crypto.display}</span>
+                                    {iconForShare(share)}
+                                    <span className='ml-2'>{share.display}</span>
                                 </td>
-                                <td className="px-4 py-2">{crypto.buy}</td>
-                                <td className="px-4 py-2">{crypto.sell}</td>
-                                <td className={`hidden md:table-cell px-4 py-2 ${parseFloat(crypto.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>
-                                    {crypto.change}
+                                <td className="px-4 py-2">{share.buy}</td>
+                                <td className="px-4 py-2">{share.sell}</td>
+                                <td className={`hidden md:table-cell px-4 py-2 ${parseFloat(share.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>
+                                    {share.change}
                                 </td>
                                 <td className="px-4 py-2">
-                                <a href={route('trade', ['crypto', getSlug(crypto)])} className="bg-white text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white py-1 px-4 rounded text-sm">
-                                Trade
-                                </a>
-                              
+                                    <a href={route('trade', ['shares', getSlugS(share)])} className="bg-white text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white py-1 px-4 rounded text-sm">
+                                        Trade
+                                    </a>
                                 </td>
                             </tr>
-                        );
-                    })}
-                </tbody>
-                
+                        ))}
+                    </tbody>
                 </table>
-                </div>
-            )}
-
-            {selectedOption === 'Shares' && (
-                <div className='shares-details mt-5'>
-                <table className="table-auto w-4/5 border-collapse mx-auto">
-                <thead className="border-b">
-                    <tr>
-                        <th className="px-4 py-2">Display</th>
-                        <th className="px-4 py-2">Buy</th>
-                        <th className="px-4 py-2">Sell</th>
-                        <th className="hidden md:table-cell px-4 py-2">24H Change</th>
-                        <th className="hidden md:table-cell px-4 py-2">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {Object.values(fetchShareData).map((crypto) => {
-                    console.log(crypto);
-                    return (
-                        <tr id={crypto.id} className='hover:cursor-pointer hover:bg-red-200'>
-                            <td className="px-4 py-2 flex items-center">
-                             { iconForShare(crypto)}
-                                <span className='ml-2'>{crypto.display}</span>
-                            </td>
-                            <td className="px-4 py-2">{crypto.buy}</td>
-                            <td className="px-4 py-2">{crypto.sell}</td>
-                            <td className={`hidden md:table-cell px-4 py-2 ${parseFloat(crypto.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>
-                                {crypto.change}
-                            </td>
-                            <td className="px-4 py-2">
-                            <a href={route('trade', ['shares', getSlugS(crypto)])} className="bg-white text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white py-1 px-4 rounded text-sm">
-                                Trade
-                            </a>
-                            </td>
-                        </tr>
-                    );
-                })}
-            </tbody>
-            
-            </table>
-                </div>
-            )}
+            </div>
         </div>
     );
 };

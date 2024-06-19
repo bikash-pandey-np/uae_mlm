@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Inertia } from '@inertiajs/inertia';
+
 import { usePage } from '@inertiajs/inertia-react';
 import { FiMenu, FiChevronDown, FiX } from 'react-icons/fi';
 import Logo from './Logo';
-const MenuBar = () => {
+const MenuBar = ({balance}) => {
     const { is_customer_auth } = usePage().props;
     const [showMenu, setShowMenu] = useState(false);
     const [isUserMenuOpen, setUserMenuOpen] = useState(false);
@@ -18,8 +20,15 @@ const MenuBar = () => {
     const mobileCss = {
             'marginRight' : '0.4rem'
        }
-
+    
+    const handleLogout = (e) => {
+        e.preventDefault();
+        console.log('logout clicked');
+        Inertia.post(route('customer_logout'));
+            
+    }
     return (
+        <div className='container'>
         <nav className="bg-gray-800 py-4 px-8">
             <div className="container mx-auto flex justify-between">
                 {/* Logo */}
@@ -38,8 +47,8 @@ const MenuBar = () => {
                         </button>
                         {/* Dropdown Content */}
                         <div className="absolute left-0 hidden group-hover:block bg-gray-700 text-gray-300 rounded-md shadow-lg z-10">
-                            <a href="#" className="block px-4 py-2 hover:bg-gray-600">Crypto</a>
-                            <a href="#" className="block px-4 py-2 hover:bg-gray-600">Stocks</a>
+                            <a href={route('market.crypto')} className="block px-4 py-2 hover:bg-gray-600">Crypto</a>
+                            <a href={route('market.shares')} className="block px-4 py-2 hover:bg-gray-600">Stocks</a>
                         </div>
                     </div>
                     {/* Resources Dropdown */}
@@ -83,9 +92,8 @@ const MenuBar = () => {
                             </button>
                             {/* Dropdown Content */}
                             <div className="absolute left-0 hidden group-hover:block bg-gray-700 text-gray-300 rounded-md shadow-lg z-10">
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-600">Item1</a>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-600">Item2</a>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-600">Item3</a>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-600">Affiliate Program</a>
+                                <a href="#" className="block px-4 py-2 hover:bg-gray-600">Agent Program</a>
                             </div>
                         </div>
                     )}
@@ -117,13 +125,15 @@ const MenuBar = () => {
                             {isUserMenuOpen && (
                                 <div className="origin-top-right absolute right-0 z-10 mt-2 w-48 rounded-md shadow-lg z-10">
                                     <div className="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                                        <h3 className='block px-4 py-2 bg-blue-200 text-black-300'>Balance: 120 USDT</h3>
+                                        <h3 className='block px-4 py-2 bg-blue-200 text-black-300'>Balance: {balance} USDT</h3>
                                         <a href={route('dashboard')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Dashboard</a>
                                         <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Profile</a>
                                         <a href={route('deposit')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Deposit</a>
                                         <a href={route('withdraw')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Withdraw</a>
                                         <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Trade History</a>
-                                        <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Logout</button>
+                                        <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" 
+                                            role="menuitem"
+                                            onClick={(e) => handleLogout(e)}>Logout</button>
                                     </div>
                                 </div>
                             )}
@@ -196,10 +206,9 @@ const MenuBar = () => {
                             </button>
                             {/* Dropdown Content */}
                             <div className="absolute left-0 hidden group-hover:block bg-gray-700 text-gray-300 rounded-md shadow-lg z-10">
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-600">Item1</a>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-600">Item2</a>
-                                <a href="#" className="block px-4 py-2 hover:bg-gray-600">Item3</a>
-                            </div>
+                            <a href="#" className="block px-4 py-2 hover:bg-gray-600">Affiliate Program</a>
+                            <a href="#" className="block px-4 py-2 hover:bg-gray-600">Agent Program</a>
+                        </div>
                         </div>
                     )}
                     {/* Trade link - Show only if authenticated */}
@@ -218,6 +227,7 @@ const MenuBar = () => {
                 </div>
             </div>
         </nav>
+        </div>
     );
 };
 

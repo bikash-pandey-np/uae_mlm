@@ -46,10 +46,6 @@ Route::get('/shares', [MarketController::class, 'getSharePage'])
 Route::get('/shares-data', [MarketController::class, 'getShareData'])
     ->name('market.share-data');
 
-//price api for trade
-Route::get('/current-price/{slug}', [MarketController::class, 'getPriceForTrade'])
-    ->name('current-price');
-
 
 //protected routes 
 Route::middleware(['auth.guard:customer'])->group(function () {
@@ -72,6 +68,14 @@ Route::middleware(['auth.guard:customer'])->group(function () {
     Route::get('/withdraw', [WithDrawController::class, 'getWithdrawPage'])
         ->name('withdraw');
     Route::post('/withdraw', [WithDrawController::class, 'processWithdrawl']);
+
+    //price api for trade
+    Route::get('/current-price', [MarketController::class, 'getPriceForTrade'])
+        ->name('current-price');
+
+
+    Route::post('/logout', [AuthController::class, 'logout'])
+        ->name('customer_logout');
 });
 
 include 'backend.php';
