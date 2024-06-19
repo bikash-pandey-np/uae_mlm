@@ -3,7 +3,7 @@ import MenuBar from './Components/MenuBar';
 import banner from '../../../images/homepage-banner.jpeg';
 import '../../../css/app/front.css';
 
-const Dashboard = () => {
+const Dashboard = ({total_deposit_amount, pending_deposit, total_withdraw, total_pending_withdraw, balance}) => {
     // const sectionStyle = {
     //     height: "90vh",
     //     backgroundImage: `url(${banner})`,
@@ -11,7 +11,7 @@ const Dashboard = () => {
     //     backgroundPosition: 'center',
     //     backgroundRepeat: 'no-repeat'
     // };
-
+    console.log(balance);
     return (
         <div>
         <MenuBar />
@@ -20,25 +20,25 @@ const Dashboard = () => {
         {/* First column */}
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
             <p className="text-white font-semibold">Total Deposit:</p>
-            <p className="text-green-600 text-xl">$340 USDT</p>
+            <p className="text-green-600 text-xl">{total_deposit_amount} USDT</p>
         </div>
 
         {/* Second column */}
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
             <p className="text-white font-semibold">Pending Deposit:</p>
-            <p className="text-green-600 text-xl">$340 USDT</p>
+            <p className="text-green-600 text-xl">{pending_deposit} USDT</p>
         </div>
 
         {/* Third column */}
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
             <p className="text-white font-semibold">Total Withdraw:</p>
-            <p className="text-green-600 text-xl">$340 USDT</p>
+            <p className="text-green-600 text-xl">{total_withdraw}USDT</p>
         </div>
 
         {/* Fourth column */}
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
             <p className="text-white font-semibold">Pending Withdraw:</p>
-            <p className="text-green-600 text-xl">$340 USDT</p>
+            <p className="text-green-600 text-xl">{total_pending_withdraw} USDT</p>
         </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">

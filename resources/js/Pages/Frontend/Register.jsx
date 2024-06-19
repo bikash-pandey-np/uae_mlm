@@ -204,7 +204,6 @@ const RegisterPage = () => {
                                         value={data.country_code}
                                         className="appearance-none block w-1/4 px-3 py-2 border rounded-l-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                     >
-                                        <option value="977">+977</option>
                                         <option value="971">+971</option>
                                         <option value="91">+91</option>
 
