@@ -201,10 +201,10 @@ const MenuBar = () => {
             </div>
         </div>
         <div className="md:flex items-center mt-6 ml-8">
-    <a href="#" className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm mbl_login_btn">
+    <a href={route(('login'))} className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm mbl_login_btn">
         Login
     </a>
-    <a href="#" className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm register_btn">Register</a>
+    <a href={route('register')} className="ml-4 py-2 px-4 rounded-full border border-transparent shadow-sm register_btn">Register</a>
 </div>
 
     </div>
