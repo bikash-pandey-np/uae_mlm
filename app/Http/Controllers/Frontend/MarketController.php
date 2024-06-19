@@ -23,7 +23,6 @@ class MarketController extends Controller
     function getPriceForTrade($slug) {
         $url = 'https://api-v2.capex.com/quotesv2?key=1&q=aaveusd,linkusd,btcfutures,ethereum,adausd,facebook,tesla,google,apple,nvidia,amzn,netflix';
         $response = Http::get($url);
-    
         if($response->successful()) {
             return response()->json($response->json()[$slug]['price'], 200);
         } else {
