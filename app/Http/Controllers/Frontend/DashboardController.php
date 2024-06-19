@@ -63,6 +63,7 @@ class DashboardController extends Controller
             'pending_deposit' => $this->getPendingDeposit(),
             'total_withdraw' => $this->getTotalWithdraw(),
             'total_pending_withdraw' => $this->getPendingWithdraw(),
+            'username' => auth()->guard('customer')->user()->full_name
 
         ]);
     }

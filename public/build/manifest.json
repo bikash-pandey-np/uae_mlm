@@ -1,20 +1,20 @@
 {
-  "_iconBase-42798df7.js": {
-    "file": "assets/iconBase-42798df7.js",
+  "_iconBase-ae16be1a.js": {
+    "file": "assets/iconBase-ae16be1a.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_index-a2746110.js": {
-    "file": "assets/index-a2746110.js",
+  "_index-7f7e15dd.js": {
+    "file": "assets/index-7f7e15dd.js",
     "imports": [
-      "_iconBase-42798df7.js"
+      "_iconBase-ae16be1a.js"
     ]
   },
-  "_index-ed3b9e9b.js": {
-    "file": "assets/index-ed3b9e9b.js",
+  "_index-bdcb10f7.js": {
+    "file": "assets/index-bdcb10f7.js",
     "imports": [
-      "_iconBase-42798df7.js"
+      "_iconBase-ae16be1a.js"
     ]
   },
   "front.css": {
@@ -22,7 +22,7 @@
     "src": "front.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-4a7858cd.css",
+    "file": "assets/app-1ed86d8e.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -44,9 +44,9 @@
   },
   "resources/js/Pages/Backend/Components/Layout.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Layout-53da8f96.js",
+    "file": "assets/Layout-fe0097f8.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Backend/Components/MenuBar.jsx"
@@ -56,9 +56,9 @@
   },
   "resources/js/Pages/Backend/Components/MenuBar.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/MenuBar-769195ac.js",
+    "file": "assets/MenuBar-271d2624.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -67,9 +67,9 @@
   },
   "resources/js/Pages/Backend/Components/Modal.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Modal-3f5e2349.js",
+    "file": "assets/Modal-f745ee2c.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -78,9 +78,9 @@
   },
   "resources/js/Pages/Backend/Components/PageHeader.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/PageHeader-1d79bd7b.js",
+    "file": "assets/PageHeader-6a64823c.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -89,9 +89,9 @@
   },
   "resources/js/Pages/Backend/Components/ToggleSwitch.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/ToggleSwitch-cde2be38.js",
+    "file": "assets/ToggleSwitch-b5c644f3.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -100,26 +100,26 @@
   },
   "resources/js/Pages/Backend/Customers/Customer.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Customer-4dc91c3c.js",
+    "file": "assets/Customer-ad228d60.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Backend/Components/Layout.jsx",
       "resources/js/Pages/Backend/Components/PageHeader.jsx",
       "resources/js/Pages/Backend/Components/Modal.jsx",
-      "_index-a2746110.js",
+      "_index-bdcb10f7.js",
       "resources/js/Pages/Backend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js"
+      "_iconBase-ae16be1a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Backend/Customers/Customer.jsx"
   },
   "resources/js/Pages/Backend/Dashboard.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Dashboard-34efa3bd.js",
+    "file": "assets/Dashboard-a1153698.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Backend/Components/Layout.jsx",
@@ -130,9 +130,9 @@
   },
   "resources/js/Pages/Backend/DepositInfo/CreateInfo.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/CreateInfo-fb7083a2.js",
+    "file": "assets/CreateInfo-7ce8c55e.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Backend/Components/Layout.jsx",
@@ -144,44 +144,44 @@
   },
   "resources/js/Pages/Backend/DepositInfo/DepositInfo.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/DepositInfo-c9e4edf6.js",
+    "file": "assets/DepositInfo-b3daa1c2.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Backend/Components/Layout.jsx",
       "resources/js/Pages/Backend/Components/PageHeader.jsx",
       "resources/js/Pages/Backend/Components/ToggleSwitch.jsx",
-      "_index-a2746110.js",
+      "_index-bdcb10f7.js",
       "resources/js/Pages/Backend/Components/Modal.jsx",
       "resources/js/Pages/Backend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js"
+      "_iconBase-ae16be1a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Backend/DepositInfo/DepositInfo.jsx"
   },
   "resources/js/Pages/Backend/DepositRequest/DepositRequest.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/DepositRequest-43beaf3d.js",
+    "file": "assets/DepositRequest-5b0b3853.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Backend/Components/Layout.jsx",
       "resources/js/Pages/Backend/Components/PageHeader.jsx",
-      "_index-a2746110.js",
+      "_index-bdcb10f7.js",
       "resources/js/Pages/Backend/Components/Modal.jsx",
       "resources/js/Pages/Backend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js"
+      "_iconBase-ae16be1a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Backend/DepositRequest/DepositRequest.jsx"
   },
   "resources/js/Pages/Backend/Login.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Login-71936320.js",
+    "file": "assets/Login-e3d6f1f2.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -190,26 +190,26 @@
   },
   "resources/js/Pages/Backend/Withdraw/Withdraw.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Withdraw-51ca634b.js",
+    "file": "assets/Withdraw-585145fc.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Backend/Components/Layout.jsx",
       "resources/js/Pages/Backend/Components/PageHeader.jsx",
-      "_index-a2746110.js",
+      "_index-bdcb10f7.js",
       "resources/js/Pages/Backend/Components/Modal.jsx",
       "resources/js/Pages/Backend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js"
+      "_iconBase-ae16be1a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Backend/Withdraw/Withdraw.jsx"
   },
   "resources/js/Pages/Frontend/Components/FrontModal.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/FrontModal-8580f783.js",
+    "file": "assets/FrontModal-0e3708fb.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -218,9 +218,9 @@
   },
   "resources/js/Pages/Frontend/Components/Logo.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Logo-6e152132.js",
+    "file": "assets/Logo-4bfe0f27.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -229,16 +229,27 @@
   },
   "resources/js/Pages/Frontend/Components/MenuBar.jsx": {
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/MenuBar-70a1842f.js",
+    "file": "assets/MenuBar-53fd2f6c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_iconBase-42798df7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Frontend/Components/MenuBar.jsx"
+  },
+  "resources/js/Pages/Frontend/Components/SwitchComponent.jsx": {
+    "css": [
+      "assets/app-1ed86d8e.css"
+    ],
+    "file": "assets/SwitchComponent-f3304e3d.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Frontend/Components/SwitchComponent.jsx"
   },
   "resources/js/Pages/Frontend/Crypto.jsx": {
     "assets": [
@@ -246,13 +257,13 @@
     ],
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Crypto-c6d161a4.js",
+    "file": "assets/Crypto-719584ba.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -261,13 +272,14 @@
   "resources/js/Pages/Frontend/Dashboard.jsx": {
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Dashboard-164d7781.js",
+    "file": "assets/Dashboard-7c844ac5.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js",
+      "resources/js/Pages/Frontend/Components/SwitchComponent.jsx",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -276,14 +288,14 @@
   "resources/js/Pages/Frontend/DepositForm.jsx": {
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/DepositForm-e1219d67.js",
+    "file": "assets/DepositForm-23a5bbc6.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index-ed3b9e9b.js",
+      "_index-7f7e15dd.js",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -292,16 +304,16 @@
   "resources/js/Pages/Frontend/DepositHistory.jsx": {
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/DepositHistory-20513a37.js",
+    "file": "assets/DepositHistory-2a73f46e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index-ed3b9e9b.js",
-      "_index-a2746110.js",
+      "_index-7f7e15dd.js",
+      "_index-bdcb10f7.js",
       "resources/js/Pages/Frontend/Components/FrontModal.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -313,13 +325,13 @@
     ],
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Homepage-6ca9ecaa.js",
+    "file": "assets/Homepage-2fc7b904.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -328,14 +340,14 @@
   "resources/js/Pages/Frontend/Login.jsx": {
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Login-89240134.js",
+    "file": "assets/Login-882106f3.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_index-a2746110.js",
-      "_iconBase-42798df7.js",
+      "_index-bdcb10f7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -346,13 +358,13 @@
       "assets/not-found-de1ad3a5.svg"
     ],
     "css": [
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/NotSupported-29419d56.js",
+    "file": "assets/NotSupported-f152a9aa.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -361,14 +373,14 @@
   "resources/js/Pages/Frontend/Register.jsx": {
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Register-c9095487.js",
+    "file": "assets/Register-08d15547.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_index-a2746110.js",
-      "_iconBase-42798df7.js",
+      "_index-bdcb10f7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -380,13 +392,13 @@
     ],
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Shares-2378164c.js",
+    "file": "assets/Shares-70263031.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -395,13 +407,13 @@
   "resources/js/Pages/Frontend/Trade.jsx": {
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Trade-9d3dac96.js",
+    "file": "assets/Trade-e0197281.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -410,13 +422,13 @@
   "resources/js/Pages/Frontend/Withdraw.jsx": {
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Withdraw-42dca654.js",
+    "file": "assets/Withdraw-06beac66.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
-      "_iconBase-42798df7.js",
+      "_iconBase-ae16be1a.js",
       "resources/js/Pages/Frontend/Components/Logo.jsx"
     ],
     "isDynamicEntry": true,
@@ -425,9 +437,9 @@
   "resources/js/Pages/Test.jsx": {
     "css": [
       "assets/front-60227e56.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
-    "file": "assets/Test-95a0707c.js",
+    "file": "assets/Test-4fc3e091.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -441,7 +453,7 @@
   "resources/js/app.jsx": {
     "css": [
       "assets/app-d9e3f7bd.css",
-      "assets/app-4a7858cd.css"
+      "assets/app-1ed86d8e.css"
     ],
     "dynamicImports": [
       "resources/js/Pages/Backend/Components/Layout.jsx",
@@ -459,6 +471,7 @@
       "resources/js/Pages/Frontend/Components/FrontModal.jsx",
       "resources/js/Pages/Frontend/Components/Logo.jsx",
       "resources/js/Pages/Frontend/Components/MenuBar.jsx",
+      "resources/js/Pages/Frontend/Components/SwitchComponent.jsx",
       "resources/js/Pages/Frontend/Crypto.jsx",
       "resources/js/Pages/Frontend/Dashboard.jsx",
       "resources/js/Pages/Frontend/DepositForm.jsx",
@@ -472,7 +485,7 @@
       "resources/js/Pages/Frontend/Withdraw.jsx",
       "resources/js/Pages/Test.jsx"
     ],
-    "file": "assets/app-c1d50754.js",
+    "file": "assets/app-a384a3ae.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
