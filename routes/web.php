@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\DepositController;
 use App\Http\Controllers\Frontend\MarketController;
 use App\Http\Controllers\Frontend\WithDrawController;
+use App\Http\Controllers\Frontend\DashboardController;
 
 Route::get('/', function () {
     return Inertia::render('Frontend/Homepage'); 
@@ -52,9 +53,7 @@ Route::get('/current-price/{slug}', [MarketController::class, 'getPriceForTrade'
 
 //protected routes 
 Route::middleware(['auth.guard:customer'])->group(function () {
-    Route::get('/dashboard', function(){
-        return Inertia::render('Frontend/Dashboard'); 
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard');
 
     Route::get('/deposit', [DepositController::class, 'getPage'])
         ->name('deposit');

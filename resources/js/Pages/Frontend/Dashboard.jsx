@@ -47,12 +47,10 @@ const Dashboard = () => {
             <h2 className="text-white text-md font-semibold mb-2">Importang Links</h2>
             <ul className="text-green-500">
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Deposit Account</a></li>
-                <li><a href="#">Deposit History</a></li>
-                <li><a href="#">Withdraw From Account</a></li>
+                <li><a href={route('deposit')}>Deposit Account</a></li>
+                <li><a href={route('deposit-history')}>Deposit History</a></li>
+                <li><a href={route('withdraw')}>Withdraw From Account</a></li>
                 <li><a href="#">Withdraw History</a></li>
-                <li><a href="#">Trade</a></li>
-                <li><a href="#">Trade History</a></li>
 
             </ul>
         </div>

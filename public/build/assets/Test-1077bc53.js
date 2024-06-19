@@ -1,4 +1,4 @@
-import{r as a,j as t}from"./app-69f142c7.js";/* empty css              *//* empty css            */function i(){const s=a.useRef();return a.useEffect(()=>{const e=document.createElement("script");e.src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js",e.type="text/javascript",e.async=!0,e.innerHTML=`
+import{r as a,j as t}from"./app-f55e9457.js";/* empty css              *//* empty css            */function i(){const s=a.useRef();return a.useEffect(()=>{const e=document.createElement("script");e.src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js",e.type="text/javascript",e.async=!0,e.innerHTML=`
         {
           "autosize": true,
           "symbol": "BINANCE:BTCUSDT",
