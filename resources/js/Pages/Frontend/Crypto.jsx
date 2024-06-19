@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import MenuBar from './Components/MenuBar';
+import banner_crypto from '../../../images/crypto_banner.jpg'
+
 import '../../../css/app/front.css';
 
 const Crypto = ( ) => {
@@ -83,10 +85,20 @@ const Crypto = ( ) => {
     return (
         <div>
             <MenuBar />
-            <section style={{ height: "70vh" }} className='bg-gray-800 banner_section'>
+            <section
+            style={{
+                height: "70vh",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0px 8px 10px -5px rgba(0, 0, 0, 0.75)', // Only bottom shadow
+            }}
+            className='bg-white-800'
+        >
+         <img src={banner_crypto} />
             </section>
 
-            <section className='text-center mt-4 mx-4'>
+            <section className='text-center mt-6 mx-4'>
                 <div className="container mx-auto">
                     <h2 className="text-2xl font-bold mb-4">Crypto Market Data</h2>
                     <table className="table-auto w-4/5 border-collapse mx-auto">

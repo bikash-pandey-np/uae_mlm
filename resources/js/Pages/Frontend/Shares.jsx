@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import MenuBar from './Components/MenuBar';
+import share_banner from '../../../images/share_banner.png'
 import '../../../css/app/front.css';
 
 const Shares = ( ) => {
@@ -94,8 +95,21 @@ const Shares = ( ) => {
     return (
         <div>
             <MenuBar />
-            <section style={{ height: "70vh" }} className='bg-gray-800 banner_section'>
-            </section>
+            <section
+            style={{
+                width: '100%',
+                height: "70vh",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0px 8px 10px -5px rgba(0, 0, 0, 0.75)', // Only bottom shadow
+                overflow: 'hidden', // Ensures content does not overflow
+            }}
+            className='bg-white-800'
+        >
+            <img src={share_banner} className="md:max-w-55 sm:w-full" />
+        </section>
+        
 
             <section className='text-center mt-4 mx-4'>
                 <div className="container mx-auto">
