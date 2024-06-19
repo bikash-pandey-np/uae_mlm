@@ -1,1 +1,0 @@
-import{j as s}from"./app-932ec9d2.js";import a from"./MenuBar-abd75552.js";/* empty css            */const o=({children:r})=>s.jsxs("div",{className:"h-screen bg-gray-100",children:[s.jsx(a,{}),s.jsx("main",{className:"p-4",children:r})]});export{o as default};

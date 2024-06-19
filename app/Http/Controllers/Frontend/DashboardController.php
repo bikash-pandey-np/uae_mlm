@@ -50,7 +50,10 @@ class DashboardController extends Controller
         return $total;
     }
     function getPendingWithdraw() {
-        return 0;
+        $total = WithdrawRequest::where('requested_by', auth()->guard('customer')->user()->id)
+            ->where('status', 'Pending')
+            ->sum('amount');
+        return $total;
     }
     function getDashboard() {
        
