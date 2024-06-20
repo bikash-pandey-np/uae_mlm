@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia;
 use App\Models\WithdrawRequest;
+use Auth;
 
 class WithdrawController extends Controller
 {
@@ -34,6 +35,7 @@ class WithdrawController extends Controller
         return Inertia::render('Backend/Withdraw/Withdraw', [
             'withdrawRequests' => $withdrawRequests,
             'search' => $search,
+            'balance' => Auth::guard('customer')->user()->balance,
         ]);
     }
 }

@@ -12,7 +12,7 @@ const BottomNavbar = ({ active }) => {
                 <AiOutlineDollarCircle className="text-xl" />
                 <span className="text-xs mt-1">Trade</span>
             </a>
-            <a href="#" className={`flex flex-col items-center text-gray-600 hover:text-gray-900 ${active === 'portfolio' ? 'text-red-500' : ''}`}>
+            <a href={route('portfolio')} className={`flex flex-col items-center text-gray-600 hover:text-gray-900 ${active === 'portfolio' ? 'text-red-500' : ''}`}>
                 <AiOutlineWallet className="text-xl" />
                 <span className="text-xs mt-1">Portfolio</span>
             </a>

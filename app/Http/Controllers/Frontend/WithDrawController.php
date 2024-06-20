@@ -9,12 +9,16 @@ use Validator;
 use Auth;
 use App\Models\WithdrawRequest;
 use Illuminate\Database\QueryException;
+use App\Models\Customer;
 
 class WithDrawController extends Controller
 {
 
     function getWithdrawPage() {
-        return Inertia::render('Frontend/Withdraw');
+        return Inertia::render('Frontend/Withdraw', [
+            'balance' => Auth::guard('customer')->check() ? Auth::guard('customer')->user()->balance : null,
+
+        ]);
     }
 
     function processWithdrawl(Request $request) {
@@ -53,14 +57,12 @@ class WithDrawController extends Controller
         try{
             $temp = WithdrawRequest::create($data);
             $code = WithdrawRequest::find($temp->id)->transaction_code;
-
             return back()->with(
                 "success",
                 "Withdraw Request Successful! Transaction Code: " . $code
             );
         }catch (QueryException $e) {
             // Handle specific database errors
-            dd($e);
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1364) {
                 // Handle error when a required field is missing

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\DepositRequest;
+use App\Models\Trade;
 
 class Customer extends Authenticatable
 {
@@ -44,6 +45,11 @@ class Customer extends Authenticatable
         static::creating(function ($customer) {
             $customer->customer_code = 'CS' . str_pad(Customer::count() + 1, 6, '0', STR_PAD_LEFT);
         });
+    }
+
+    public function trades()
+    {
+        return $this->hasMany(Trade::class, 'traded_by');
     }
 
     public function deposits()

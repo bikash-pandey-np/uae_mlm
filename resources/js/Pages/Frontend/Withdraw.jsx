@@ -1,22 +1,22 @@
 import React, {useEffect} from 'react';
 import { useForm, usePage } from '@inertiajs/inertia-react';
 import { toast } from 'react-toastify';
+import { MdInfo } from 'react-icons/md';
 
 import MenuBar from './Components/MenuBar';
 import { FiMenu, FiChevronDown } from 'react-icons/fi'; // Import FiMenu for toggler icon
 import '../../../css/app/front.css';
 
-const Withdraw = () => {
+const Withdraw = ({balance}) => {
     const { flash } = usePage().props;
 
-    const balance = 1200;
-    const pending_amount = 12320;
     const { data, setData, post, processing, errors } = useForm({
         amount: '',
         currency: 'USDT',
         wallet_address: ''
     });
     useEffect(() => {
+        document.title = "Withdraw | The Capex Pro"
         let toastId = null;
 
         if (flash.success || flash.error) {
@@ -52,23 +52,27 @@ const Withdraw = () => {
    
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data);
         post(route('withdraw'), data)
     };
     return (
         <div>
-            <MenuBar />
+            <MenuBar balance={balance} />
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <div className="flex items-center">
                     <h2 className="text-xl font-extrabold text-gray-900 mb-4">Withdraw From Account</h2>
-                    <p className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-auto">
-                        Balance: <span className='font-bold'>{balance} USDT ~ {balance * 83.45} INR</span>
-                        <span className='mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-4'>
-                            Pending Deposit: <span className='font-bold'>~{pending_amount}</span> INR
-                        </span>
-                    </p>
+                   
                 </div>
+                <div className="bg-yellow-100 border-l-4 border-yellow-500 text-black-700 p-4 flex my-4" role="alert">
+                <div className="mr-2">
+                  <MdInfo size={24} />
+                </div>
+                <div>
+                  <p className="font-bold">Info</p>
+                  <p>No fees are deducted while withdrawing from Crypto </p>
+                  <p>You can manually request a bank withdrawal with a fee of 10% of the amount. </p>
 
+                </div>
+              </div>
             <form onSubmit={handleSubmit} className="space-y-6 mt-4">
             <div>
                 <label htmlFor="amount" className="block text-sm font-medium text-gray-700">

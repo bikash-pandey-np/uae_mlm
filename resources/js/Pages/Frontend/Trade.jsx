@@ -5,7 +5,7 @@ import { FiMenu, FiChevronDown } from 'react-icons/fi';
 import '../../../css/app/front.css';
 import Switch from 'react-switch'; // Import react-switch component
 
-const Trade = ({ slug, type, active }) => {
+const Trade = ({ slug, type, active, balance }) => {
     const containerRef = useRef(null);
     const widgetRef = useRef(null);
     const [orderBookType, setOrderBookType] = useState('long'); // 'long' or 'short'
@@ -143,7 +143,7 @@ const Trade = ({ slug, type, active }) => {
 
     return (
         <div>
-            <MenuBar />
+            <MenuBar balance={balance} />
 
             <section>
                 <div className='my-5 px-6 py-4'>
@@ -173,8 +173,8 @@ const Trade = ({ slug, type, active }) => {
 
                 {/* Trading buttons */}
                 <div className="grid grid-cols-2 gap-4 mt-4">
-                    <button className={`bg-green-500 text-white py-2 rounded-md font-semibold hover:bg-green-600 transition duration-200 ${orderBookType === 'long' ? 'bg-opacity-100' : 'bg-opacity-50'}`} onClick={() => setOrderBookType('long')}>Long</button>
-                    <button className={`bg-red-500 text-white py-2 rounded-md font-semibold hover:bg-red-600 transition duration-200 ${orderBookType === 'short' ? 'bg-opacity-100' : 'bg-opacity-50'}`} onClick={() => setOrderBookType('short')}>Short</button>
+                    <button className={`bg-green-500 text-white py-2 rounded-md font-semibold hover:bg-green-600 transition duration-200 ${orderBookType === 'long' ? 'bg-opacity-100' : 'bg-opacity-50'}`} >Long</button>
+                    <button className={`bg-red-500 text-white py-2 rounded-md font-semibold hover:bg-red-600 transition duration-200 ${orderBookType === 'short' ? 'bg-opacity-100' : 'bg-opacity-50'}`} >Short</button>
                 </div>
 
                 {/* Toggle switch for Long and Short order books */}

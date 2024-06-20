@@ -69,12 +69,15 @@ const DepositForm = ({ inr_deposit_info, usdt_deposit_info, balance, pending_amo
 
     return (
         <section>
-            <MenuBar />
+            <MenuBar balance={balance} />
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <div className="flex items-center">
-            <h2 className="text-xl font-extrabold text-gray-900 mb-4">Fund your Account</h2>
-            <p className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-auto">Balance : <span className='font-bold'>{balance} USDT ~ {balance * 83.45} INR</span>
-                <span className='mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-4'>Pending Deposit : <span className='font-bold'>~{pending_amount}</span> INR</span>
+            <h2 className="text-xl font-extrabold text-gray-900 mb-4">Fund your Account <br/>
+            <span className="inline-block bg-blue-500 text-white px-3 py-1 text-sm font-semibold rounded shadow-md hover:bg-blue-600 transition duration-200">
+                <a href={route('deposit-history')}>Deposit History</a>
+            </span>
+            </h2>
+            <p className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-auto">Balance : <span className='font-bold'>{balance} USDT <br />~ ₹ {(balance * 83.45).toFixed(2)} </span>
             </p>
           </div>
 
@@ -87,6 +90,17 @@ const DepositForm = ({ inr_deposit_info, usdt_deposit_info, balance, pending_amo
               <p>Please Fund your Account, to start trading </p>
             </div>
           </div> : null}
+
+          <div className="bg-yellow-100 border-l-4 border-yellow-500 text-black-700 p-4 flex my-4" role="alert">
+          <div className="mr-2">
+            <MdInfo size={24} />
+          </div>
+          <div>
+            <p className="font-bold">Info</p>
+            <p>No fees are deducted while Depositing from Crypto or Bank Transfer </p>
+
+          </div>
+        </div>
           
 
             <form onSubmit={handleSubmit} className="space-y-6">

@@ -3,7 +3,7 @@ import MenuBar from './Components/MenuBar';
 import banner from '../../../images/homepage-banner.jpeg';
 import '../../../css/app/front.css';
 
-const Homepage = () => {
+const Homepage = ({balance}) => {
     const sectionStyle = {
         height: "90vh",
         backgroundImage: `url(${banner})`,
@@ -14,7 +14,7 @@ const Homepage = () => {
 
     return (
         <div>
-        <MenuBar />
+        <MenuBar balance={balance} />
         <section style={sectionStyle} className='bg-gray-800 banner_section'>
         {/* Content of the banner section goes here if needed */}
         </section>

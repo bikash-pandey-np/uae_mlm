@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia;
 use Http;
+use Auth;
 
 class MarketController extends Controller
 {
@@ -46,13 +47,17 @@ class MarketController extends Controller
     function getCryptoPage() {
        
         return Inertia::render('Frontend/Crypto', [
-            'active' => 'crypto'
+            'active' => 'crypto',
+            'balance' => Auth::guard('customer')->check() ? Auth::guard('customer')->user()->balance : null,
         ]);
     }
 
     function getSharePage() {
        
-        return Inertia::render('Frontend/Shares');
+        return Inertia::render('Frontend/Shares', [
+            'balance' => Auth::guard('customer')->check() ? Auth::guard('customer')->user()->balance : null,
+
+        ]);
     }
 
     function getTradePage($type, $slug) {
@@ -70,7 +75,9 @@ class MarketController extends Controller
             return Inertia::render('Frontend/Trade', [
                 'slug' => $slug,
                 'type' => $type,
-                'active' => 'crypto'
+                'active' => 'crypto',
+                'balance' => Auth::guard('customer')->check() ? Auth::guard('customer')->user()->balance : null,
+
 
             ]);
         }
@@ -79,7 +86,9 @@ class MarketController extends Controller
             return Inertia::render('Frontend/Trade', [
                 'slug' => $slug,
                 'type' => $type,
-                'active' => 'crypto'
+                'active' => 'crypto',
+                'balance' => Auth::guard('customer')->check() ? Auth::guard('customer')->user()->balance : null,
+                
 
             ]);
         }

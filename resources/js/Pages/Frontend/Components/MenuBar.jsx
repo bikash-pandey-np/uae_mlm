@@ -3,6 +3,7 @@ import { Inertia } from '@inertiajs/inertia';
 
 import { usePage } from '@inertiajs/inertia-react';
 import { FiMenu, FiChevronDown, FiX } from 'react-icons/fi';
+import user_profile from '../../../../images/profile.png'
 import Logo from './Logo';
 const MenuBar = ({balance}) => {
     const { is_customer_auth } = usePage().props;
@@ -120,17 +121,15 @@ const MenuBar = ({balance}) => {
                     ) : (
                         <div className="relative">
                             <button onClick={toggleUserMenu} className="flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid" id="user-menu" aria-label="User menu" aria-haspopup="true">
-                                <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                <img className="h-8 w-8 rounded-full" src={user_profile} alt="" />
                             </button>
                             {isUserMenuOpen && (
                                 <div className="origin-top-right absolute right-0 z-10 mt-2 w-48 rounded-md shadow-lg z-10">
                                     <div className="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                                         <h3 className='block px-4 py-2 bg-blue-200 text-black-300'>Balance: {balance} USDT</h3>
                                         <a href={route('dashboard')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Dashboard</a>
-                                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Profile</a>
                                         <a href={route('deposit')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Deposit</a>
                                         <a href={route('withdraw')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Withdraw</a>
-                                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Trade History</a>
                                         <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" 
                                             role="menuitem"
                                             onClick={(e) => handleLogout(e)}>Logout</button>

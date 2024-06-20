@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia;
+use Auth;
 use App\Models\DepositRequest;
 use App\Models\WithdrawRequest;
 use App\Models\Customer;
-use Auth;
 
-class DashboardController extends Controller
+class PortfolioController extends Controller
 {
     function getTotalDeposit() {
         $total_deposit_amount_inr = DepositRequest::where('deposited_by', auth()->guard('customer')->user()->id)
@@ -57,22 +57,14 @@ class DashboardController extends Controller
         return $total;
     }
 
-    function getHomepage() {
-        return Inertia::render('Frontend/Homepage', [
+    function getPortfolioPage() {
+        return Inertia::render('Frontend/Portfolio', [
+            'active' => 'portfolio',
             'balance' => Auth::guard('customer')->check() ? Auth::guard('customer')->user()->balance : null,
-        ]);
-    }
-    function getDashboard() {
-       
-        return Inertia::render('Frontend/Dashboard', [
-            'balance' => Customer::where('id', auth()->guard('customer')->user()->id)->first()->balance,
             'total_deposit_amount' => $this->getTotalDeposit(),
             'pending_deposit' => $this->getPendingDeposit(),
             'total_withdraw' => $this->getTotalWithdraw(),
             'total_pending_withdraw' => $this->getPendingWithdraw(),
-            'username' => auth()->guard('customer')->user()->full_name,
-            'active' => 'dashboard'
-
         ]);
     }
 }

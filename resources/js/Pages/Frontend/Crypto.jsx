@@ -4,7 +4,7 @@ import banner_crypto from '../../../images/crypto_banner.jpg'
 
 import '../../../css/app/front.css';
 
-const Crypto = ( ) => {
+const Crypto = ({balance}) => {
     const [fetchMarketData, setFetchMarketData] = useState({});
 
     
@@ -84,7 +84,7 @@ const Crypto = ( ) => {
     
     return (
         <div>
-            <MenuBar />
+            <MenuBar balance={balance} />
             <section
             style={{
                 height: "70vh",

@@ -25,7 +25,6 @@ const DepositHistory = ({ balance, pending_amount, deposit_histories }) => {
     const handleFilterButtonClick = () => {
         // Perform filtering based on searchValue and filterValue
     };
-    console.log(deposit_histories);
     useEffect(() => {
         document.title = "Deposit History | TheCapex.pro";
 
@@ -69,16 +68,11 @@ const DepositHistory = ({ balance, pending_amount, deposit_histories }) => {
 
     return (
         <section>
-            <MenuBar />
+            <MenuBar balance={balance} />
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <div className="flex items-center">
                     <h2 className="text-xl font-bold text-gray-700 mb-4">Deposit History</h2>
-                    <p className="mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-auto">
-                        Balance: <span className='font-bold'>{balance} USDT ~ {balance * 83.45} INR</span>
-                        <span className='mt-1 text-sm text-gray-900 sm:mt-0 sm:w-2/3 ml-4'>
-                            Pending Deposit: <span className='font-bold'>~{pending_amount}</span> INR
-                        </span>
-                    </p>
+                   
                 </div>
 
                 {deposit_histories.length === 0 ? (
@@ -198,7 +192,6 @@ const DepositHistory = ({ balance, pending_amount, deposit_histories }) => {
 
                         {selectedHistory.remark && <p className='mt-1'>Remark: {selectedHistory.remark}</p>}
 
-                        {console.log(selectedHistory)}
                     </FrontModal>
                 )}
             </div>

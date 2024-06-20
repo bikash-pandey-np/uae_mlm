@@ -7,10 +7,9 @@ use App\Http\Controllers\Frontend\DepositController;
 use App\Http\Controllers\Frontend\MarketController;
 use App\Http\Controllers\Frontend\WithDrawController;
 use App\Http\Controllers\Frontend\DashboardController;
+use App\Http\Controllers\Frontend\PortfolioController;
 
-Route::get('/', function () {
-    return Inertia::render('Frontend/Homepage'); 
-})->name('homepage');
+Route::get('/', [DashboardController::class, 'getHomepage'])->name('homepage');
 
 Route::get('/test', function(){
     return Inertia::render('Test');
@@ -73,6 +72,10 @@ Route::middleware(['auth.guard:customer'])->group(function () {
     Route::get('/current-price', [MarketController::class, 'getPriceForTrade'])
         ->name('current-price');
 
+
+    //portfolio page 
+    Route::get('/portfolio', [PortfolioController::class, 'getPortfolioPage'])
+        ->name('portfolio');
 
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('customer_logout');

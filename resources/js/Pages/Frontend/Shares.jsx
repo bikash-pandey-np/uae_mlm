@@ -3,7 +3,7 @@ import MenuBar from './Components/MenuBar';
 import share_banner from '../../../images/share_banner.png'
 import '../../../css/app/front.css';
 
-const Shares = ( ) => {
+const Shares = ({balance}) => {
     const [fetchMarketData, setFetchMarketData] = useState({});
 
     
@@ -94,7 +94,7 @@ const Shares = ( ) => {
     
     return (
         <div>
-            <MenuBar />
+            <MenuBar balance={balance} />
             <section
             style={{
                 width: '100%',

@@ -47,7 +47,7 @@ class DepositController extends Controller
         return inertia("Frontend/DepositForm", [
             "inr_deposit_info" => $inrDepositInfo,
             "usdt_deposit_info" => $usdtDepositInfo,
-            "balance" => Auth::guard("customer")->user()->balance,
+            'balance' => Auth::guard('customer')->check() ? Auth::guard('customer')->user()->balance : null,
             "pending_amount" => $approxPendingAmount,
         ]);
     }
@@ -78,7 +78,7 @@ class DepositController extends Controller
         // Calculate approximate total pending amount
         $approxPendingAmount = $pendingAmountUSDT * 83.46 + $pendingAmountINR;
         return Inertia::render('Frontend/DepositHistory', [
-            "balance" => Auth::guard("customer")->user()->balance,
+            'balance' => Auth::guard('customer')->check() ? Auth::guard('customer')->user()->balance : null,
             "pending_amount" => $approxPendingAmount,
             'deposit_histories' => $depositHistory
         ]);
