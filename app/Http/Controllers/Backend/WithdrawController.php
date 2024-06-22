@@ -35,7 +35,6 @@ class WithdrawController extends Controller
         return Inertia::render('Backend/Withdraw/Withdraw', [
             'withdrawRequests' => $withdrawRequests,
             'search' => $search,
-            'balance' => Auth::guard('customer')->user()->balance,
         ]);
     }
 }

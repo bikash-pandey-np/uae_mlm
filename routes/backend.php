@@ -35,7 +35,17 @@ Route::prefix('backend')->group(function(){
         
         Route::get('/deposit-requests', [DepositRequestController::class, 'index'])
             ->name('admin.deposit-requests');
-        
+        Route::get('/deposit-request-detail/{code}', [DepositRequestController::class, 'getSingle'])
+            ->name('admin.single-deposit-requests');
+        Route::get('/add-deposit-request', [DepositRequestController::class, 'getAddDepositPage'])
+            ->name('admin.add.deposit-requests');
+        Route::post('/add-deposit-request', [DepositRequestController::class, 'store']);
+
+        Route::post('/approve-deposit', [DepositRequestController::class, 'approveDeposit'])
+            ->name('admin.approve.deposit');
+        Route::post('/reject-deposit', [DepositRequestController::class, 'rejectDeposit'])
+            ->name('admin.reject.deposit');
+
         Route::get('/withdraw-requests', [WithdrawController::class, 'index'])
             ->name('admin.withdraw-requests');
     });

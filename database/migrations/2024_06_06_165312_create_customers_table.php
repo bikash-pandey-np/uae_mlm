@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('profile_img')->nullable();
             $table->string('doc_img')->nullable();
             $table->boolean('is_verified')->default(false);
-            $table->float('balance')->default(0);
+            $table->decimal('balance', 15, 2)->default(0);
             $table->rememberToken();
 
             $table->timestamps();
