@@ -20,7 +20,47 @@ class DepositInfoController extends Controller
     function getCreatePage() {
         return Inertia::render('Backend/DepositInfo/CreateInfo');
     }
+    function getUpdatePage($id) {
+        $selected = DepositInfo::where('id', $id)->first();
+        if($selected)
+        {
 
+            return Inertia::render('Backend/DepositInfo/UpdateInfo', [
+                'selected' => $selected
+            ]);
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Fetch the DepositInfo instance by ID
+        $depositInfo = DepositInfo::findOrFail($id);
+    
+        // Validate incoming request data
+        $data = $request->validate([
+            'title' => 'required|string',
+            'is_active' => 'required|in:active,inactive', // Accepts 'active' or 'inactive' strings
+            'currency' => 'required|in:INR,USDT',
+            'type' => 'required|in:flat,crypto',
+            'wallet_address' => ($request->currency === 'USDT' || $request->type === 'crypto') ? 'required' : 'nullable',
+            'network_type' => ($request->currency === 'USDT' || $request->type === 'crypto') ? 'required' : 'nullable',
+            'flat_account_name' => ($request->currency === 'INR' || $request->type === 'flat') ? 'required' : 'nullable',
+            'flat_bank_name' => ($request->currency === 'INR' || $request->type === 'flat') ? 'required' : 'nullable',
+            'flat_account_no' => ($request->currency === 'INR' || $request->type === 'flat') ? 'required' : 'nullable',
+            'deposit_instruction' => 'required|string',
+        ]);
+    
+        // Convert 'is_active' from string to boolean
+        $data['is_active'] = $request->is_active === 'active' ? true : false;
+    
+        // Update the DepositInfo instance with validated data
+        if ($depositInfo->update($data)) {
+            return back()->with('success', 'Update Successful!');
+        } else {
+            return back()->with('error', 'Update Unsuccessful!');
+        }
+    }
+    
     function store(Request $request) {
         if (!auth()->check()) {
             return redirect()->route('admin.login');

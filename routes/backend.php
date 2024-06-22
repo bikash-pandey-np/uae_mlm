@@ -22,14 +22,23 @@ Route::prefix('backend')->group(function(){
             ->name('admin.dashboard');
         Route::post('/logout', [LoginController::class, 'handleLogout'])
             ->name('admin.logout');
-        Route::get('/deposit-info', [DepositInfoController::class, 'getPage'])
-            ->name('admin.deposit-info');
-        
-        Route::get('/create-deposit-info', [DepositInfoController::class, 'getCreatePage'])
-            ->name('admin.create.deposit-info');
-        
-        Route::post('/create-deposit-info', [DepositInfoController::class, 'store']);
 
+        Route::prefix('deposit-info')->group(function () {
+            
+            Route::get('/', [DepositInfoController::class, 'getPage'])
+            ->name('admin.deposit-info');
+            
+            Route::get('/create', [DepositInfoController::class, 'getCreatePage'])
+            ->name('admin.create.deposit-info');
+
+            Route::get('/update/{id}', [DepositInfoController::class, 'getUpdatePage'])
+            ->name('admin.update.deposit-info');
+        
+            Route::post('/update/{id}', [DepositInfoController::class, 'update']);
+            
+            Route::post('/create', [DepositInfoController::class, 'store']);
+            
+        });
         Route::get('/customers', [CustomerController::class, 'getPage'])
             ->name('admin.customers');
         

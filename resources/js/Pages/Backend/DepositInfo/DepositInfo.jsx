@@ -76,8 +76,17 @@ const DepositInfo = ({rows}) => {
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-black-500">
                             <div className="flex items-center">
-                                <AiFillEye onClick={() => handleOpenModal(row)} className="text-blue-500 hover:text-blue-700 cursor-pointer" />
-                                <AiFillEdit className="ml-2 text-green-500 hover:text-green-700 cursor-pointer" />
+                            <a className='bg-blue-500 text-white px-3 py-1'
+                            onClick={() => handleOpenModal(row)}
+                            >
+                            <AiFillEye
+                            className="text-white hover:text-blue-700 cursor-pointer"
+                        /> Info
+                            </a>
+                        <a href={route('admin.update.deposit-info', row.id)} className="ml-2 flex items-center bg-yellow-500 px-4 py-2">
+                            <AiFillEdit className="text-green-500 hover:text-green-700 cursor-pointer" />
+                            <span className="ml-1">Update</span>
+                        </a>
                                 {openModalId === row.id && (
                                     <Modal isOpen={openModalId === row.id} onClose={handleCloseModal}>
                                     <h1 className="font-bold mb-3">{currentRow.title} Details</h1>

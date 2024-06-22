@@ -40,6 +40,8 @@ const DepositRequest = ({ depositRequests, search }) => {
             <PageHeader
                 title="Manage Deposit Requests"
                 breadcrumbItems={breadcrumbItems}
+                buttonLabel="Create New"
+                buttonLink={route("admin.add.deposit-requests")}
             />
 
             {/* Search input */}
@@ -109,18 +111,14 @@ const DepositRequest = ({ depositRequests, search }) => {
                                        </>
                                     )}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-black-500">
-                                <div className="flex items-center">
-                                <a href={route('admin.single-deposit-requests', row.transaction_code)}>
-                                <AiFillEye
-                                className="text-blue-500 hover:text-blue-700 cursor-pointer"
-                                /> Info
-                                </a>
-                                <AiFillEdit
-                                className="ml-2 text-green-500 hover:text-green-700 cursor-pointer"
-                                    />
-                                </div>
-                            </td>
+                           <td className="px-6 py-4 whitespace-nowrap text-sm text-black-500">
+    <div className="flex items-center">
+        <a href={route('admin.single-deposit-requests', row.transaction_code)} className="flex items-center bg-blue-400 text-blue-500 px-4 py-2 text-white hover:text-blue-700 cursor-pointer">
+            <AiFillEye className="mr-1" /> View Detail
+        </a>
+    </div>
+</td>
+
                         </tr>
                     ))}
                 </tbody>
