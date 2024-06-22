@@ -46,8 +46,12 @@ Route::get('/shares-data', [MarketController::class, 'getShareData'])
     ->name('market.share-data');
 
 
+Route::get('/verify', [AuthController::class, 'getVerifyPage'])
+    ->name('verify');
+
 //protected routes 
 Route::middleware(['auth.guard:customer'])->group(function () {
+
     Route::get('/dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard');
 
     Route::get('/deposit', [DepositController::class, 'getPage'])

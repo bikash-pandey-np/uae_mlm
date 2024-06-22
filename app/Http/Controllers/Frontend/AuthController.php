@@ -8,9 +8,81 @@ use App\Models\Customer;
 use Hash;
 use Illuminate\Database\QueryException;
 use Auth;
+use Inertia;
+use DB;
+use Str;
+use App\Mail\VerifyEmailMail;
+use Illuminate\Support\Facades\Mail;
+
 
 class AuthController extends Controller
 {
+
+    function getVerifyPage(Request $request) {
+
+        if(! isset($request->email))
+        {
+            return redirect()->route('login')->with('error', 'Please Login');
+        }
+
+        //check if customer is verified 
+        $cust = Customer::where('email', $request->email)->first();
+
+        if(!$cust)
+        {
+            return redirect()->route('register')->with('error', 'Please register');
+
+        }
+
+        if($cust->is_verified)
+        {
+            return redirect()->route('login')->with('error', 'Already verified');
+
+        }
+
+        //generaate otp
+        $otp = strtoupper(Str::random(6));
+        $data = [
+            'email' => $request->email,
+            'token' => $otp,
+            'created_at' => now(),
+        ];
+
+        $existingToken = DB::table('password_reset_tokens')->where('email', $data['email'])->first();
+
+        if($existingToken)
+        {
+            DB::table('password_reset_tokens')->where('email', $data['email'])->delete();
+        }
+
+        DB::table('password_reset_tokens')->insert($data);
+        // Fetch OTP token from password_reset_tokens table
+    $fetch = DB::table('password_reset_tokens')
+                ->where('email', $request->email)
+                ->first();
+
+    // Fetch customer details from Customer model
+    $user = Customer::where('email', $fetch->email)->first();
+
+    // Check if $fetch and $user are valid before proceeding
+    if ($fetch && $user) {
+        // Send email using Mailable class
+        Mail::to($request->email)->send(new VerifyEmailMail([
+            'email' => $fetch->email,
+            'name' => $user->full_name,
+            'otp' => $fetch->token
+        ]));
+
+        return back()->with('success', 'Otp sent');
+    } else {
+        return 'Unable to send verification email. User not found or OTP data missing.';
+    }
+        
+        return Inertia::render('Frontend/VerifyEmail', [
+            'email' =>  $request->email
+        ]);
+    }
+
     function register(Request $request) {
         // Validation rules
         $rules = [
@@ -63,8 +135,9 @@ class AuthController extends Controller
                 'contact_number' => $validatedData['contact_number'],
             ]);
             // If the creation is successful, redirect back with success message
-            return back()->with('success', 'Registration Successful!');
-        } catch (QueryException $e) {
+            return redirect()->route('verify', ['email' => $validatedData['email']])
+            ->with('success', 'Registration Successful!');
+   } catch (QueryException $e) {
             // Handle specific database errors
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1364) {

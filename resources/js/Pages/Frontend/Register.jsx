@@ -35,6 +35,8 @@ const RegisterPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         post(route('register'), data);
+
+       
     };
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
