@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 
 // Import your app.css file
 import 'react-toastify/dist/ReactToastify.css';
+import 'sweetalert2/dist/sweetalert2.css';
 
 import '../css/app.css';
 

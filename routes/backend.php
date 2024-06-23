@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\DepositInfoController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\DepositRequestController;
 use App\Http\Controllers\Backend\WithdrawController;
+use App\Http\Controllers\Backend\TradeController;
 
 Route::prefix('backend')->group(function(){
     // Login page 
@@ -57,5 +58,15 @@ Route::prefix('backend')->group(function(){
 
         Route::get('/withdraw-requests', [WithdrawController::class, 'index'])
             ->name('admin.withdraw-requests');
+
+        Route::prefix('trades')->group(function () {
+            Route::get('/', [TradeController::class, 'index'])
+                ->name('admin.trades');
+            Route::post('/pass', [TradeController::class, 'passTrade'])
+                ->name('admin.pass_trade');
+
+            Route::post('/fail', [TradeController::class, 'failTrade'])
+                ->name('admin.fail_trade');
+        });
     });
 });

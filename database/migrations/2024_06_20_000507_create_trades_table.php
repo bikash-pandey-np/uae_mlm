@@ -14,11 +14,17 @@ return new class extends Migration
         Schema::create('trades', function (Blueprint $table) {
             $table->id();
             $table->decimal('amount', 15, 2);
+            $table->decimal('trade_price', 15, 2);
+            $table->decimal('trade_close_price', 15, 2)->nullable();
+
             $table->string('pair');
             $table->enum('type', ['Long', 'Short']);
             $table->integer('duration_minutes');
-            $table->decimal('outcome', 15, 2);
+            $table->decimal('outcome', 15, 2)->nullable();
             $table->datetime('expired_time');
+            $table->boolean('is_active')->default(true);
+
+            $table->string('status')->default('Not Setteled');
 
             $table->unsignedBigInteger('traded_by');
 

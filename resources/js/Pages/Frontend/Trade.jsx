@@ -4,12 +4,96 @@ import BottomNavbar from './Components/BottomNavbar';
 import { FiMenu, FiChevronDown } from 'react-icons/fi';
 import '../../../css/app/front.css';
 import Switch from 'react-switch'; // Import react-switch component
+import { useForm, usePage } from '@inertiajs/inertia-react';
+import { toast } from 'react-toastify';
+import CountdownTimer from './Components/CountdownTimer';
+import { MdClose } from 'react-icons/md'; // Importing close icon from react-icons
 
-const Trade = ({ slug, type, active, balance }) => {
+const Trade = ({ slug, type, active, balance, trades }) => {
+
+    console.log('trades', trades);
     const containerRef = useRef(null);
+
+    const { flash } = usePage().props;
+
     const widgetRef = useRef(null);
     const [orderBookType, setOrderBookType] = useState('long'); // 'long' or 'short'
     const [currentPrice, setCurrentPrice] = useState(null);
+    const [showLongModal, setShowLongModal] = useState(false);
+    const [modalType, setModalType] = useState('Long');
+    
+    const { data, setData, post, processing, errors } = useForm({
+        trade_amount: '',
+        pair:slug,
+        type: '',
+        trade_duration: 1,
+        
+    });
+    const showLongMdl = () => {
+        console.log('long modal');
+        setModalType('Long')
+        setData('type', 'Long')
+        setShowLongModal(true)
+    }
+
+    const showShortMdl = () => {
+        console.log('short modal');
+        setModalType('Short')
+        setData('type', 'Short')
+        setShowLongModal(true)
+    }
+
+    const closeModal = () => {
+        setModalType('Long')
+        setData('type', '')
+        setShowLongModal(false)
+    }
+
+    const handleLongSubmit = async (e) => {
+        e.preventDefault();
+    
+        // Set type in the form data
+        console.log('before send', data);
+        // Post the form data
+        await post(route('take_trade'), data);
+    
+       
+    }
+    
+    useEffect(() => {
+        console.log('use effect toast');
+        let toastId = null;
+
+        if (flash.success || flash.error) {
+            if (toastId) {
+                toast.dismiss(toastId);
+            }
+
+            if (flash.success) {
+                console.log('success toast');
+                toastId = toast.success(flash.success, {
+                    pauseOnHover: false,
+                    autoClose: 2000,
+                    onClose: () => window.location.reload()
+                });
+            } else if (flash.error) {
+                console.log('error toast');
+
+                toastId = toast.error(flash.error, {
+                    pauseOnHover: false,
+                    autoClose: 2000,
+                    onClose: () => window.location.reload()
+                });
+            }
+        }
+
+        return () => {
+            if (toastId) {
+                toast.dismiss(toastId);
+            }
+        };
+    }, [flash]);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -144,7 +228,6 @@ const Trade = ({ slug, type, active, balance }) => {
     return (
         <div>
             <MenuBar balance={balance} />
-
             <section>
                 <div className='my-5 px-6 py-4'>
                     <h3 className='text-xl font-semibold'>{slug}</h3>
@@ -173,8 +256,63 @@ const Trade = ({ slug, type, active, balance }) => {
 
                 {/* Trading buttons */}
                 <div className="grid grid-cols-2 gap-4 mt-4">
-                    <button className={`bg-green-500 text-white py-2 rounded-md font-semibold hover:bg-green-600 transition duration-200 ${orderBookType === 'long' ? 'bg-opacity-100' : 'bg-opacity-50'}`} >Long</button>
-                    <button className={`bg-red-500 text-white py-2 rounded-md font-semibold hover:bg-red-600 transition duration-200 ${orderBookType === 'short' ? 'bg-opacity-100' : 'bg-opacity-50'}`} >Short</button>
+                    <button className={`bg-green-500 text-white py-2 rounded-md font-semibold hover:bg-green-600 transition duration-200 ${orderBookType === 'long' ? 'bg-opacity-100' : 'bg-opacity-50'}`} 
+                        onClick={showLongMdl}
+                    >Long</button>
+                    <button className={`bg-red-500 text-white py-2 rounded-md font-semibold hover:bg-red-600 transition duration-200 ${orderBookType === 'short' ? 'bg-opacity-100' : 'bg-opacity-50'}`} 
+                        onClick={showShortMdl}
+                    >Short</button>
+                
+                    {showLongModal && (
+                        <div className="fixed inset-0 flex items-center justify-center z-50">
+                            <div className="fixed inset-0 bg-gray-800 bg-opacity-50"></div>
+                            <div className="bg-white rounded-lg p-8 max-w-md w-full relative z-50">
+                                {modalType === 'Long' && <h2 className="text-xl font-semibold mb-4">Enter Long Trade</h2>}
+                                {modalType === 'Short' && <h2 className="text-xl font-semibold mb-4">Enter Short Trade</h2>}
+                                <button className="absolute top-2 right-2 text-gray-500 hover:text-gray-700" onClick={closeModal}>
+                                    <MdClose size={24} />
+                                </button>
+                                <form onSubmit={handleLongSubmit}>
+                                    <label className="block mb-2">Enter Trade amount (USDT)</label>
+                                    <input
+                                        type="number"
+                                        className="border border-gray-300 rounded-md w-full py-2 px-3 mb-4"
+                                        placeholder="Enter trade amount"
+                                        value={data.trade_amount}
+                                        onChange={(e) => setData('trade_amount', e.target.value)}
+                                    />
+                                    {errors.trade_amount && (
+                                        <p className="text-sm text-red-600">{errors.trade_amount}</p>
+                                    )}
+                    
+                                    <div className="mt-2 mb-4">
+                                        <label className="block mb-2">Trade Duration (Minutes)</label>
+                                        <select
+                                            id="tradeDuration"
+                                            className="border border-gray-300 rounded-md px-3 py-2 ml-4"
+                                            value={data.trade_duration}
+                                            onChange={(e) => setData('trade_duration', e.target.value)}
+                                        >
+                                            <option value="1">1 minute</option>
+                                            <option value="3">3 minutes</option>
+                                            <option value="5">5 minutes</option>
+                                            <option value="15">15 minutes</option>
+                                        </select>
+                                    </div>
+                    
+                                    <button
+                                        type="submit"
+                                        className={`py-2 px-4 rounded-md font-semibold transition duration-200 ${
+                                            modalType === 'Long' ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-red-500 text-white hover:bg-red-600'
+                                        }`}
+                                    >
+                                        Submit
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    )}
+                    
                 </div>
 
                 {/* Toggle switch for Long and Short order books */}
@@ -198,13 +336,77 @@ const Trade = ({ slug, type, active, balance }) => {
                     {orderBookType === 'long' && (
                         <div className="bg-gray-100 p-4 rounded-md shadow-md">
                             <h3 className="text-lg font-semibold text-green-500">Long Order Book</h3>
-                            <p>Details for Long position...</p>
+                            <table className='mb-6 w-full border-collapse border border-gray-200'>
+                            <thead>
+                            <tr className='bg-gray-100'>
+                            <th className='border border-gray-200 px-4 py-2'>Amount</th>
+                    <th className='border border-gray-200 px-4 py-2'>Price</th>
+                    <th className='border border-gray-200 px-4 py-2'>Duration (minutes)</th>
+                    <th className='border border-gray-200 px-4 py-2'>Outcome</th>
+                    <th className='border border-gray-200 px-4 py-2'>Ends in</th>
+                            
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {trades.map((item, index) => {
+                                if(item.type === "Long")
+                                    {
+                                        return (
+                                            <tr key={index} className='border border-gray-200'>
+                                                <td className='border border-gray-200 px-4 py-2'>{item.amount}</td>
+                                                <td className='border border-gray-200 px-4 py-2'>{item.trade_price}</td>
+                                                <td className='border border-gray-200 px-4 py-2'>{item.duration_minutes} Minutes</td>
+                                                <td className='border border-gray-200 px-4 py-2'>{item.is_active ? 'Running' : item.outcome}</td>
+                                                <td className='border border-gray-200 px-4 py-2'>
+                                                    <CountdownTimer ends_at={item.expired_time} />
+
+                                                    </td>
+                                            </tr>
+                                        );
+                
+                                    }
+                            })}
+                            </tbody>
+                            </table>
                         </div>
                     )}
                     {orderBookType === 'short' && (
                         <div className="bg-gray-100 p-4 rounded-md shadow-md">
                             <h3 className="text-lg font-semibold text-red-500">Short Order Book</h3>
-                            <p>Details for Short position...</p>
+                            <table className='mb-6 w-full border-collapse border border-gray-200'>
+                            <thead>
+                            <tr className='bg-gray-100'>
+                            <th className='border border-gray-200 px-4 py-2'>Amount</th>
+                    <th className='border border-gray-200 px-4 py-2'>Price</th>
+                    <th className='border border-gray-200 px-4 py-2'>Duration (minutes)</th>
+                    <th className='border border-gray-200 px-4 py-2'>Outcome</th>
+                    <th className='border border-gray-200 px-4 py-2'>Ends in</th>
+                            
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {trades.map((item, index) => {
+                                if(item.type === "Short")
+                                    {
+
+                                        return (
+                                            <tr key={index} className='border border-gray-200'>
+                                                <td className='border border-gray-200 px-4 py-2'>{item.amount}</td>
+                                                <td className='border border-gray-200 px-4 py-2'>{item.trade_price}</td>
+                                                <td className='border border-gray-200 px-4 py-2'>{item.duration_minutes} Minutes</td>
+                                                <td className='border border-gray-200 px-4 py-2'>{item.is_active ? 'Running' : item.outcome}</td>
+                                                <td className='border border-gray-200 px-4 py-2'>
+                                                <CountdownTimer ends_at={item.expired_time} />
+                                                </td>
+                                            </tr>
+                                        );
+                
+                                    }
+                            })}
+                            </tbody>
+                            </table>
                         </div>
                     )}
                 </div>

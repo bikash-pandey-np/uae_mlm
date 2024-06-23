@@ -1,0 +1,1 @@
+import{j as s}from"./app-664bebcc.js";/* empty css            */const r=({title:t,number:e})=>s.jsxs("div",{className:"bg-white rounded-lg shadow-md p-6",children:[s.jsx("p",{className:"text-sm font-medium text-gray-500",children:t}),s.jsx("h2",{className:"text-xl font-semibold mt-2",children:e})]});export{r as default};

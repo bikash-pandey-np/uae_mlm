@@ -17,7 +17,7 @@ const VerifyEmail = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('data', data);
-        // post(route('login'), data);
+        post(route('verify'), data);
     };
 
   
@@ -76,6 +76,9 @@ const VerifyEmail = () => {
                                     />
                                 </div>
                             </div>
+                            {errors.email && (
+                                <p className="mt-2 text-sm text-red-600" id="email-error">{errors.email}</p>
+                            )}
 
                               {/* OTP*/}
                               <div>
@@ -86,14 +89,16 @@ const VerifyEmail = () => {
                                   <input
                                       id="number"
                                       name="otp"
-                                      type="number"
+                                      type="text"
                                       value={data.otp}
                                       onChange={(e) => setData('otp', e.target.value)}
                                       className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                   />
                               </div>
                           </div>
-                         
+                          {errors.otp && (
+                            <p className="mt-2 text-sm text-red-600" id="email-error">{errors.otp}</p>
+                        )}
 
                             {/* Submit button */}
                             <div>

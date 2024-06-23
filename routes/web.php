@@ -48,6 +48,7 @@ Route::get('/shares-data', [MarketController::class, 'getShareData'])
 
 Route::get('/verify', [AuthController::class, 'getVerifyPage'])
     ->name('verify');
+Route::post('/verify', [AuthController::class, 'verifyOtp']);
 
 //protected routes 
 Route::middleware(['auth.guard:customer'])->group(function () {
@@ -76,6 +77,9 @@ Route::middleware(['auth.guard:customer'])->group(function () {
     Route::get('/current-price', [MarketController::class, 'getPriceForTrade'])
         ->name('current-price');
 
+    //take trade
+    Route::post('/take-trade', [MarketController::class, 'takeTrade'])
+        ->name('take_trade');
 
     //portfolio page 
     Route::get('/portfolio', [PortfolioController::class, 'getPortfolioPage'])
