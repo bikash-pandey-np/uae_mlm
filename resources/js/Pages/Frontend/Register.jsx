@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, usePage } from '@inertiajs/inertia-react';
-import MenuBar from './Components/MenuBar';
 import { toast } from 'react-toastify';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-
+import logo from '../../../images/capex_email_logo.svg'
 import '../../../css/app/front.css';
 
 const RegisterPage = () => {
@@ -79,9 +78,17 @@ const RegisterPage = () => {
 
     return (
         <section>
-            <MenuBar />
             <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-8 sm:px-6 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-md">
+                <h2 className="text-center text-xl font-extrabold text-gray-900">
+                <a className="flex justify-center items-center"
+                href={route('v1.homepage')}
+                
+                >
+                    <img src={logo} style={{ height: '35px' }} />
+                </a>
+            </h2>
+                    
                     <h2 className="text-center text-xl font-extrabold text-gray-900">Register an Account</h2>
                 </div>
 
@@ -263,6 +270,18 @@ const RegisterPage = () => {
                                 >
                                     {processing ? 'Processing...' : 'Register'}
                                 </button>
+                            </div>
+                            <div className="bg-white p-4 shadow-md rounded-md mt-4 hover:bg-gray-300 hover:cursor-pointer">
+                            <ul>
+                                <li>
+                                    Already Registered? 
+                                    <a href={route('login')}
+                                        className='ml-4 rounded px-4 py-2 text-white'
+                                        style={{ background: '#fe4948' }}
+                                        >Login</a>
+                                </li>
+                               
+                            </ul>
                             </div>
                         </form>
                     </div>

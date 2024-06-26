@@ -132,7 +132,9 @@ const MenuBar = ({balance}) => {
                                         <a href={route('withdraw')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" role="menuitem">Withdraw</a>
                                         <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" 
                                             role="menuitem"
-                                            onClick={(e) => handleLogout(e)}>Logout</button>
+                                            onClick={(e) => handleLogout(e)
+                                                
+                                            }>Logout</button>
                                     </div>
                                 </div>
                             )}

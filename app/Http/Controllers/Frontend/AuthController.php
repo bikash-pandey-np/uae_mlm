@@ -37,7 +37,7 @@ class AuthController extends Controller
 
         if($cust->is_verified)
         {
-            return redirect()->route('dashboard')->with('error', 'Already verified');
+            return redirect()->route('v1.homepage')->with('error', 'Already verified');
         }
 
         //generaate otp
@@ -192,7 +192,6 @@ class AuthController extends Controller
             'email.required' => 'The email address is required.',
             'email.email' => 'Please provide a valid email address.',
             'email.unique' => 'The email address has already been taken.',
-        
           
             'password.required' => 'The password is required.',
             'password.string' => 'The password must be a string.',
@@ -210,7 +209,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::guard('customer')->attempt($credentials)) {
             // Check if there's an intended URL in the session
-            $intendedUrl = session()->get('intended', route('dashboard'));
+            $intendedUrl = session()->get('intended', route('v1.homepage'));
     
             // Redirect to the intended URL or the default dashboard route
             return redirect($intendedUrl)->with('success', 'Success');

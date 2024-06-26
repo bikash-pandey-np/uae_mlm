@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, usePage } from '@inertiajs/inertia-react';
-import MenuBar from './Components/MenuBar';
 import { toast } from 'react-toastify';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import logo from '../../../images/capex_email_logo.svg'
 
 import '../../../css/app/front.css';
 
@@ -49,10 +49,17 @@ const VerifyEmail = () => {
 
     return (
         <section>
-            <MenuBar />
             <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-1 sm:px-6 lg:px-8 mx-auto">
                 <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                    <h2 className="text-center text-xl font-extrabold text-gray-900">Verify Your Account</h2>
+                <h2 className="text-center text-xl font-extrabold text-gray-900">
+                <a className="flex justify-center items-center"
+                href={route('v1.homepage')}
+                
+                >
+                    <img src={logo} style={{ height: '35px' }} />
+                </a>
+            </h2>    
+                <h2 className="text-center text-xl font-extrabold text-gray-900">Verify Your Account</h2>
                 </div>
 
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">

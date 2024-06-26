@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->decimal('amount', 15, 2);
             $table->string('transaction_code', 10)->unique(); 
-            $table->enum('currency', ['USDT'])->default('USDT');
-            $table->string('wallet_address');
+            $table->enum('currency', ['USDT','INR'])->default('USDT');
+            $table->string('wallet_address')->nullable();
+            $table->string('bank_info')->nullable();
 
             $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending');
             

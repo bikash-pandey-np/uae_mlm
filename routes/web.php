@@ -9,11 +9,11 @@ use App\Http\Controllers\Frontend\WithDrawController;
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\PortfolioController;
 
+include 'website.php';
+
+
 Route::get('/', [DashboardController::class, 'getHomepage'])->name('homepage');
 
-Route::get('/test', function(){
-    return Inertia::render('Test');
-})->name('test');
 
 // Register routes 
 Route::prefix('register')->group(function(){
@@ -52,40 +52,17 @@ Route::post('/verify', [AuthController::class, 'verifyOtp']);
 
 //protected routes 
 Route::middleware(['auth.guard:customer'])->group(function () {
-
-    Route::get('/dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard');
-
-    Route::get('/deposit', [DepositController::class, 'getPage'])
-        ->name('deposit');
-    
-    Route::post('/deposit', [DepositController::class, 'processDeposit']);
-
     //deposit history page 
     Route::get('/deposit-history', [DepositController::class, 'getDepositHistoryPage'])
         ->name('deposit-history');
-    
-    //trade 
-    Route::get('/trade/{type}/{slug}', [MarketController::class, 'getTradePage'])
-        ->name('trade');
-
-    //withdraw page 
-    Route::get('/withdraw', [WithDrawController::class, 'getWithdrawPage'])
-        ->name('withdraw');
-    Route::post('/withdraw', [WithDrawController::class, 'processWithdrawl']);
 
     //price api for trade
     Route::get('/current-price', [MarketController::class, 'getPriceForTrade'])
         ->name('current-price');
 
-    //take trade
-    Route::post('/take-trade', [MarketController::class, 'takeTrade'])
-        ->name('take_trade');
 
-    //portfolio page 
-    Route::get('/portfolio', [PortfolioController::class, 'getPortfolioPage'])
-        ->name('portfolio');
-
-    Route::post('/logout', [AuthController::class, 'logout'])
+   
+        Route::post('/logout', [AuthController::class, 'logout'])
         ->name('customer_logout');
 });
 

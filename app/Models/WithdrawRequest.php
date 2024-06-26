@@ -17,6 +17,7 @@ class WithdrawRequest extends Model
         'transaction_code',
         'currency',
         'wallet_address',
+        'bank_info',
         'status',
         'is_approved',
         'approved_at',
