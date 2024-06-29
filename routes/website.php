@@ -25,7 +25,7 @@ Route::prefix('app')->group(function () {
          //take trade
         Route::post('/take-trade', [RouteController::class, 'takeTrade'])
             ->name('v1.take_trade');
-        Route::get('/portfolio', [PortfolioController::class, 'getPortfolioPage'])
+        Route::get('/assets', [PortfolioController::class, 'getPortfolioPage'])
             ->name('v1.portfolio');
 
          //withdraw page 

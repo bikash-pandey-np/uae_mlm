@@ -119,7 +119,7 @@ const SwitchComponent = ({fetchMarketData, fetchShareData}) => {
     }
 
     return (
-        <div className='m-4'>
+        <div className='m-4 text-white' >
             <div className='crypto-details mt-5'>
                 {/* Display Crypto details */}
                 <h2 className='mt-4 mb-4 font-bold'>CryptoCurrency Market</h2>

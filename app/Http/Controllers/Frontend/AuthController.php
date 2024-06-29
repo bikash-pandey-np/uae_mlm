@@ -117,7 +117,7 @@ class AuthController extends Controller
             'full_name' => 'required|string|max:255',
             'password' => ['required', 'string', 'confirmed', 'min:8', 'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]+$/'],
             'country_code' => 'required|string|max:3',
-            'contact_number' => 'required|string|digits:10|regex:/^[1-9][0-9]*$/',
+            'contact_number' => 'required|string|regex:/^[1-9][0-9]*$/',
             'agree' => 'required',
         ];
 

@@ -43,7 +43,7 @@ const BottomMenu = ({ mode }) => {
                         }
                     >
                         <RiStockFill className="h-6 w-6" />
-                        <span className="text-xs">Portfolio</span>
+                        <span className="text-xs">Assets</span>
                     </a>
                 </div>
                 <div className="flex flex-col items-center">

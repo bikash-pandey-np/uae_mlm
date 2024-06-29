@@ -14,7 +14,6 @@ const TopMenu = ({ mode, toggleMode }) => {
                     style={{ height:'30px' }} />
             </a></div>
             <div className="flex-grow mx-4">
-                <input className="w-full px-4 py-2 border border-gray-300 rounded" type="text" placeholder="Search. dasd.." />
             </div>
             <div className="flex items-center">
                 <button onClick={toggleMode} className="ml-4">

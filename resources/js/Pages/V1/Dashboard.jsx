@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import SwitchComponent from './Components/SwitchComponent';
 import Layout from "./Components/Layout";
+import img from '../../../images/1.jpg';
 
 const Dashboard = ({ balance, username }) => {
     const [fetchMarketData, setFetchMarketData] = useState({});
@@ -50,13 +51,14 @@ const Dashboard = ({ balance, username }) => {
 
     return (
         <Layout>    
-            <section style={{ marginTop: '5rem' }} >
-                <h2 className='text-xl mx-4 my-4'>Welcome, {username}</h2>
+            <section style={{ marginTop: '5rem', backgroundImage: `url(${img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+              >
+                <h2 className='text-md mx-4 my-4'>Welcome, {username}</h2>
                 <div className="mx-4 grid grid-cols-1 md:grid-cols-4 gap-4">
                     {/* First column */}
-                    <div className="bg-white-800 p-4 rounded-lg shadow-md flex items-center justify-between">
+                    <div className="bg-gray-300 p-4 rounded-lg shadow-md flex items-center justify-between">
                         <div>
-                            <p className="text-gray-500 font-semibold">Balance</p>
+                            <p className="text-black-500 font-semibold">Balance</p>
                             <p className="text-black-600 text-xl font-bold">{balance} USDT</p>
                             <p className="text-black-600 text-xl font-bold">~ ₹ {(balance * 83.23).toFixed(2)} </p>
 

@@ -26,7 +26,7 @@ const Intro = () => {
             </div>
             <h3 className="text-xl font-semibold mb-2 text-center">Our Mission</h3>
             <p className="text-lg text-center">
-            Our Mission is to provide the core intrastructure services for organizing the world's Crypto/Stocks.
+            Our Mission is to provide the core infrastructure services for organizing the world's Crypto/Stocks.
             </p>
           </div>
         </div>

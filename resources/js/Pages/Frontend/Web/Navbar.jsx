@@ -72,10 +72,10 @@ const {is_customer_auth} =  usePage().props
         {/* Responsive menu */}
         {isOpen && (
           <div className="md:hidden mt-2">
-            <a href="#" className="block text-white hover:text-gray-300 px-3 py-2">Home</a>
-            <a href="#" className="block text-white hover:text-gray-300 px-3 py-2">Features</a>
-            <a href="#" className="block text-white hover:text-gray-300 px-3 py-2">About</a>
-            <a href="#" className="block text-white hover:text-gray-300 px-3 py-2">Contact</a>
+          <a href={route('homepage')} className="text-white hover:text-gray-300 px-3 py-2">Home</a>
+          <a href={route('homepage') + '#features'} className="text-white hover:text-gray-300 px-3 py-2">Features</a>
+          <a href={route('about_page')} className="text-white hover:text-gray-300 px-3 py-2">About</a>
+          <a href={route('contact_page')} className="text-white hover:text-gray-300 px-3 py-2">Contact</a>
           </div>
         )}
       </div>

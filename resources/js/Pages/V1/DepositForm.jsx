@@ -7,10 +7,9 @@ import { toast } from 'react-toastify';
 
 import '../../../css/app/front.css';
 
-const DepositForm = ({ inr_deposit_info, usdt_deposit_info, balance, pending_amount }) => {
+const DepositForm = ({ balance, inr_deposit_info, usdt_deposit_info, pending_amount }) => {
     const { flash } = usePage().props;
     const { data, setData, post, processing, errors } = useForm({
-        amount: '',
         currency: 'INR',
         deposit_info: inr_deposit_info
     });
@@ -106,25 +105,6 @@ const DepositForm = ({ inr_deposit_info, usdt_deposit_info, balance, pending_amo
           
 
             <form onSubmit={handleSubmit} className="space-y-6 mb-8">
-                    <div>
-                        <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
-                            Deposit Amount
-                        </label>
-                        <div className="mt-1">
-                            <input
-                                id="amount"
-                                name="amount"
-                                type="number"
-                                onChange={handleChange}
-                                value={data.amount}
-                                className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            />
-                        </div>
-                        {errors.amount && (
-                            <p className="mt-2 text-sm text-red-600" id="amount-error">{errors.amount}</p>
-                        )}
-                    </div>
-
                     <div>
                         <label htmlFor="currency" className="block text-sm font-medium text-gray-700">
                             Choose Currency
