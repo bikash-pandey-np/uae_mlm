@@ -5,8 +5,10 @@ const Banner = () => {
   return (
     <section className="bg-blue-900 text-white py-20" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="max-w-7xl mx-auto px-4 flex flex-col justify-center" style={{ height:'50vh' }}>
-        <h1 className="text-4xl font-bold mb-6">Trade Crypto with Confidence</h1>
-        <p className="text-lg mb-8">Join Capex Pro today and experience seamless crypto trading.</p>
+        <h1 className="text-4xl font-bold mb-6">Trade Crypto/Share with Confidence</h1>
+        <p className="text-lg mb-8">
+        Join Capex.Pro today & Experience seamless crypto/Stocks Trading.
+        </p>
         <a href={route('register')} className="bg-white text-blue-900 hover:bg-gray-200 text-lg font-semibold px-6 py-3 rounded-lg"
         style={{ width:'180px' }}>Get Started</a>
       </div>

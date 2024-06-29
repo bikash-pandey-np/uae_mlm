@@ -53,7 +53,7 @@ const Trade = ({ slug, type, active, balance, trades }) => {
         // Set type in the form data
         console.log('before send', data);
         // Post the form data
-        await post(route('take_trade'), data);
+        await post(route('v1.take_trade'), data);
     
        
     }

@@ -3,6 +3,7 @@ import Navbar from './Web/Navbar';
 import Banner from './Web/Banner';
 import Intro from './Web/Intro';
 import Footer from './Web/Footer';
+import Feature from './Web/Feature';
 
 const Homepage = ({balance}) => {
    
@@ -12,6 +13,7 @@ const Homepage = ({balance}) => {
       <Navbar />
       <Banner />
       <Intro />
+      <Feature />
       <Footer />
       </div>
     );

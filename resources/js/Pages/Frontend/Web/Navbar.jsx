@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../../../images/capex_email_logo.svg'; // Replace with your logo path
 import { usePage } from '@inertiajs/inertia-react';
+import wa from '../../../../images/wa.svg'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,11 +11,14 @@ const {is_customer_auth} =  usePage().props
   };
 
   return (
+    <>
     <nav className="bg-gray-800 p-4">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img src={logo} alt="Capex Pro Logo" className="h-8 mr-2" /> {/* Adjust image size as needed */}
+            <a href={route('homepage')}>
+              <img src={logo} alt="Capex Pro Logo" className="h-8 mr-2" /> {/* Adjust image size as needed */}
+            </a>
           </div>
           <div className="hidden md:flex">
             <a href="#" className="text-white hover:text-gray-300 px-3 py-2">Home</a>
@@ -76,6 +80,10 @@ const {is_customer_auth} =  usePage().props
         )}
       </div>
     </nav>
+    <a href="https://wa.me/+917887746823" className="whatsapp-button fixed bottom-4 right-4 bg-gray-500 p-2 flex items-center justify-center" style={{ borderRadius: '10px' }} target="_blank" rel="noopener noreferrer">
+      <img src={wa} alt="WhatsApp" style={{ width: '100%' }}/> 
+    </a>
+    </>
   );
 };
 

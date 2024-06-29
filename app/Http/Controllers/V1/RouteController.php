@@ -10,6 +10,7 @@ use App\Models\DepositRequest;
 use App\Models\Trade;
 use App\Models\WithdrawRequest;
 use Illuminate\Database\QueryException;
+use Http;
 
 use Auth;
 use Validator;
@@ -27,7 +28,7 @@ class RouteController extends Controller
 
         return Inertia::render('V1/Dashboard', [
             'balance' => $balance,
-            'username' => 'Bikash Pandey'
+            'username' => $user->full_name
         ]);
     }
 
@@ -299,7 +300,43 @@ class RouteController extends Controller
             return Inertia::render('V1/NotSupported');
         }
     }
-
+    function priceHelper($slug) {
+        $url = 'https://api-v2.capex.com/quotesv2?key=1&q=aaveusd,linkusd,bitcoin,ethereum,adausd,facebook,tesla,google,apple,nvidia,amzn,netflix';
+        $response = Http::get($url);
+    
+        if ($response->successful()) {
+            $data = $response->json();
+    
+            switch ($slug) {
+                case 'AAVEUSDT':
+                    return $data['aaveusd']['price'];
+                case 'LINKUSDT':
+                    return $data['linkusd']['price'];
+                case 'BTCUSDT':
+                    return $data['bitcoin']['price'];
+                case 'ETHUSDT':
+                    return $data['ethereum']['price'];
+                case 'ADAUSDT':
+                    return $data['adausd']['price'];
+                case 'META':
+                    return $data['facebook']['price'];
+                case 'TSLA':
+                    return $data['tesla']['price'];
+                case 'GOOG':
+                    return $data['google']['price'];
+                case 'NVDA':
+                    return $data['nvidia']['price'];
+                case 'AMZN':
+                    return $data['amzn']['price'];
+                case 'NFLX':
+                    return $data['netflix']['price'];
+                default:
+                    return null; // Handle case when $slug doesn't match any known symbol
+            }
+        } else {
+            return response()->json(['error' => 'Failed to fetch data'], 500);
+        }
+    }
     function takeTrade(Request $request){
         $rules = [
             'trade_amount' => 'required|numeric|min:0',
