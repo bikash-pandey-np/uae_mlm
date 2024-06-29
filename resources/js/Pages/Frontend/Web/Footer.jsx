@@ -16,29 +16,21 @@ const Footer = () => {
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">Links</h3>
-            <ul>
-              <li><a href={route('homepage')} className="text-gray-400 hover:text-white">Home</a></li>
-              <li><a href="#features" className="text-gray-400 hover:text-white">Features</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">About</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Contact</a></li>
-            </ul>
+           
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             Capex Pro LLC,<br />
             <p>support@capexpro.com</p>
-            <p>
-            Office 183, Business Bay,<br />
-            Dubai, UAE<br />
-            </p>
+            <p>20/7 (Chat Support)</p>
+            
           </div>
         </div>
       </div>
      
     </footer>
     <div className="bg-gray-900 text-gray-400 text-center py-4">
-      <p>&copy; {new Date().getFullYear()} The Capex Pro. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} <a href={route('homepage')}>Thecapex.pro</a> All rights reserved.</p>
     </div>
     </>
 

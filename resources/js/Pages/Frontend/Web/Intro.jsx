@@ -38,7 +38,7 @@ const Intro = () => {
           </div>
           <h3 className="text-xl font-semibold mb-2 text-center">Our Values</h3>
           <p className="text-lg text-center">
-          Our Values are to provide the core intrastructure services for organizing the world's Crypto/Stocks.
+          Thecapex.pro Values guide our behavior, decisions, and  action, enabling unified collaboration across our diverse,  international teams.
           </p>
         </div>
         

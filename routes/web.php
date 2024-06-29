@@ -13,6 +13,8 @@ include 'website.php';
 
 
 Route::get('/', [DashboardController::class, 'getHomepage'])->name('homepage');
+Route::get('/about', [DashboardController::class, 'getAboutPage'])->name('about_page');
+Route::get('/contact', [DashboardController::class, 'getContactPage'])->name('contact_page');
 
 
 // Register routes 

@@ -21,10 +21,10 @@ const {is_customer_auth} =  usePage().props
             </a>
           </div>
           <div className="hidden md:flex">
-            <a href="#" className="text-white hover:text-gray-300 px-3 py-2">Home</a>
-            <a href="#features" className="text-white hover:text-gray-300 px-3 py-2">Features</a>
-            <a href="#" className="text-white hover:text-gray-300 px-3 py-2">About</a>
-            <a href="#" className="text-white hover:text-gray-300 px-3 py-2">Contact</a>
+            <a href={route('homepage')} className="text-white hover:text-gray-300 px-3 py-2">Home</a>
+            <a href={route('homepage') + '#features'} className="text-white hover:text-gray-300 px-3 py-2">Features</a>
+            <a href={route('about_page')} className="text-white hover:text-gray-300 px-3 py-2">About</a>
+            <a href={route('contact_page')} className="text-white hover:text-gray-300 px-3 py-2">Contact</a>
            
             {!is_customer_auth  && (
                 <a href={route('login')} className="text-white hover:text-gray-300 px-3 py-2"
@@ -80,7 +80,7 @@ const {is_customer_auth} =  usePage().props
         )}
       </div>
     </nav>
-    <a href="https://wa.me/+917887746823" className="whatsapp-button fixed bottom-4 right-4 bg-gray-500 p-2 flex items-center justify-center" style={{ borderRadius: '10px' }} target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/+447438148113" className="whatsapp-button fixed bottom-4 right-4 bg-gray-500 p-2 flex items-center justify-center" style={{ borderRadius: '10px' }} target="_blank" rel="noopener noreferrer">
       <img src={wa} alt="WhatsApp" style={{ width: '100%' }}/> 
     </a>
     </>

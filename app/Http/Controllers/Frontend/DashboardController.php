@@ -62,6 +62,16 @@ class DashboardController extends Controller
             'balance' => Auth::guard('customer')->check() ? Auth::guard('customer')->user()->balance : null,
         ]);
     }
+
+    function getAboutPage(){
+        return Inertia::render('Frontend/About');
+        
+    }
+
+    function getContactPage(){
+        return Inertia::render('Frontend/Contact');
+        
+    }
     function getDashboard() {
        
         return Inertia::render('Frontend/Dashboard', [

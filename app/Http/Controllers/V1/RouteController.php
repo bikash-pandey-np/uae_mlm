@@ -39,6 +39,10 @@ class RouteController extends Controller
         ]);
     }
 
+    function getAboutPage() {
+        return Inertia::render('Frontend/About');
+    }
+
     function processWithdrawl(Request $request) {
         // Define the validation rules based on currency
         $rules = [

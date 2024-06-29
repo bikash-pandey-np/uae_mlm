@@ -21,6 +21,7 @@ Route::prefix('app')->group(function () {
         Route::get('/trade/{type}/{slug}', [RouteController::class, 'getTradePage'])
             ->name('v1.trade');
 
+        
          //take trade
         Route::post('/take-trade', [RouteController::class, 'takeTrade'])
             ->name('v1.take_trade');
