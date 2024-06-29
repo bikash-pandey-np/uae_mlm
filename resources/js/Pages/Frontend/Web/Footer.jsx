@@ -21,8 +21,8 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             Capex Pro LLC,<br />
-            <p>support@capexpro.com</p>
-            <p>20/7 (Chat Support)</p>
+            <p>support@thecapex.pro</p>
+            <p>24/7 (Chat Support)</p>
             
           </div>
         </div>

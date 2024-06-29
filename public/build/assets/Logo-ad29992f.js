@@ -1,0 +1,1 @@
+import{j as e}from"./app-46fcfccd.js";/* empty css            */const o=()=>e.jsxs("a",{href:route("homepage"),className:"flex items-center text-white text-lg font-semibold",style:{color:"#ff4949"},children:["The ",e.jsx("span",{className:"",children:"Capex"})]});export{o as default};
