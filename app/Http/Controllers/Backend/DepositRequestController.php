@@ -16,8 +16,7 @@ class DepositRequestController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $perPage = 2;
-    
+        $perPage = 10;
         $query = DepositRequest::query()->with('depositedBy', 'depositInfo')->latest();
     
         if ($search) {
@@ -147,7 +146,11 @@ class DepositRequestController extends Controller
         if (isset($validatedData['remark'])) {
             $depositRequest->remark = $validatedData['remark'];
         }
+        $customer = Customer::find($request->deposited_by);
 
+        $customer->balance += $request->approved_amount;
+
+        $customer->save();
         // Save the deposit request
         $depositRequest->save();
 

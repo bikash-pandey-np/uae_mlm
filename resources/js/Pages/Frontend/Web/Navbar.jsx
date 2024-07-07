@@ -80,7 +80,7 @@ const {is_customer_auth} =  usePage().props
         )}
       </div>
     </nav>
-    <a href="https://wa.me/+447438148113" className="whatsapp-button fixed bottom-4 right-4 bg-gray-500 p-2 flex items-center justify-center" style={{ borderRadius: '10px' }} target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/+917887746823" className="whatsapp-button fixed bottom-4 right-4 bg-gray-500 p-2 flex items-center justify-center" style={{ borderRadius: '10px' }} target="_blank" rel="noopener noreferrer">
       <img src={wa} alt="WhatsApp" style={{ width: '100%' }}/> 
     </a>
     </>
